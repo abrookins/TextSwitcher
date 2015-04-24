@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFBEA1531AEAA2EA0089297C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */; };
+		EFBEA1551AEAA2EA0089297C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEA1541AEAA2EA0089297C /* ViewController.swift */; };
+		EFBEA1571AEAA2EA0089297C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFBEA1561AEAA2EA0089297C /* Images.xcassets */; };
+		EFBEA15A1AEAA2EA0089297C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFBEA1581AEAA2EA0089297C /* Main.storyboard */; };
+		EFBEA1661AEAA2EA0089297C /* TextSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEA1651AEAA2EA0089297C /* TextSwitcherTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFBEA1601AEAA2EA0089297C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFBEA1451AEAA2EA0089297C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFBEA14C1AEAA2EA0089297C;
+			remoteInfo = TextSwitcher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EFBEA14D1AEAA2EA0089297C /* TextSwitcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextSwitcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFBEA1511AEAA2EA0089297C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFBEA1541AEAA2EA0089297C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFBEA1561AEAA2EA0089297C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EFBEA1591AEAA2EA0089297C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFBEA15F1AEAA2EA0089297C /* TextSwitcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextSwitcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFBEA1641AEAA2EA0089297C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFBEA1651AEAA2EA0089297C /* TextSwitcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSwitcherTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFBEA14A1AEAA2EA0089297C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFBEA15C1AEAA2EA0089297C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFBEA1441AEAA2EA0089297C = {
+			isa = PBXGroup;
+			children = (
+				EFBEA14F1AEAA2EA0089297C /* TextSwitcher */,
+				EFBEA1621AEAA2EA0089297C /* TextSwitcherTests */,
+				EFBEA14E1AEAA2EA0089297C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFBEA14E1AEAA2EA0089297C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEA14D1AEAA2EA0089297C /* TextSwitcher.app */,
+				EFBEA15F1AEAA2EA0089297C /* TextSwitcherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFBEA14F1AEAA2EA0089297C /* TextSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */,
+				EFBEA1541AEAA2EA0089297C /* ViewController.swift */,
+				EFBEA1561AEAA2EA0089297C /* Images.xcassets */,
+				EFBEA1581AEAA2EA0089297C /* Main.storyboard */,
+				EFBEA1501AEAA2EA0089297C /* Supporting Files */,
+			);
+			path = TextSwitcher;
+			sourceTree = "<group>";
+		};
+		EFBEA1501AEAA2EA0089297C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEA1511AEAA2EA0089297C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EFBEA1621AEAA2EA0089297C /* TextSwitcherTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEA1651AEAA2EA0089297C /* TextSwitcherTests.swift */,
+				EFBEA1631AEAA2EA0089297C /* Supporting Files */,
+			);
+			path = TextSwitcherTests;
+			sourceTree = "<group>";
+		};
+		EFBEA1631AEAA2EA0089297C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEA1641AEAA2EA0089297C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFBEA14C1AEAA2EA0089297C /* TextSwitcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFBEA1691AEAA2EA0089297C /* Build configuration list for PBXNativeTarget "TextSwitcher" */;
+			buildPhases = (
+				EFBEA1491AEAA2EA0089297C /* Sources */,
+				EFBEA14A1AEAA2EA0089297C /* Frameworks */,
+				EFBEA14B1AEAA2EA0089297C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TextSwitcher;
+			productName = TextSwitcher;
+			productReference = EFBEA14D1AEAA2EA0089297C /* TextSwitcher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFBEA15E1AEAA2EA0089297C /* TextSwitcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFBEA16C1AEAA2EA0089297C /* Build configuration list for PBXNativeTarget "TextSwitcherTests" */;
+			buildPhases = (
+				EFBEA15B1AEAA2EA0089297C /* Sources */,
+				EFBEA15C1AEAA2EA0089297C /* Frameworks */,
+				EFBEA15D1AEAA2EA0089297C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFBEA1611AEAA2EA0089297C /* PBXTargetDependency */,
+			);
+			name = TextSwitcherTests;
+			productName = TextSwitcherTests;
+			productReference = EFBEA15F1AEAA2EA0089297C /* TextSwitcherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFBEA1451AEAA2EA0089297C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Andrew Brookins";
+				TargetAttributes = {
+					EFBEA14C1AEAA2EA0089297C = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					EFBEA15E1AEAA2EA0089297C = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = EFBEA14C1AEAA2EA0089297C;
+					};
+				};
+			};
+			buildConfigurationList = EFBEA1481AEAA2EA0089297C /* Build configuration list for PBXProject "TextSwitcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFBEA1441AEAA2EA0089297C;
+			productRefGroup = EFBEA14E1AEAA2EA0089297C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFBEA14C1AEAA2EA0089297C /* TextSwitcher */,
+				EFBEA15E1AEAA2EA0089297C /* TextSwitcherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFBEA14B1AEAA2EA0089297C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFBEA1571AEAA2EA0089297C /* Images.xcassets in Resources */,
+				EFBEA15A1AEAA2EA0089297C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFBEA15D1AEAA2EA0089297C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFBEA1491AEAA2EA0089297C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFBEA1551AEAA2EA0089297C /* ViewController.swift in Sources */,
+				EFBEA1531AEAA2EA0089297C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFBEA15B1AEAA2EA0089297C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFBEA1661AEAA2EA0089297C /* TextSwitcherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFBEA1611AEAA2EA0089297C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFBEA14C1AEAA2EA0089297C /* TextSwitcher */;
+			targetProxy = EFBEA1601AEAA2EA0089297C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFBEA1581AEAA2EA0089297C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFBEA1591AEAA2EA0089297C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFBEA1671AEAA2EA0089297C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EFBEA1681AEAA2EA0089297C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EFBEA16A1AEAA2EA0089297C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TextSwitcher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EFBEA16B1AEAA2EA0089297C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TextSwitcher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EFBEA16D1AEAA2EA0089297C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TextSwitcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextSwitcher.app/Contents/MacOS/TextSwitcher";
+			};
+			name = Debug;
+		};
+		EFBEA16E1AEAA2EA0089297C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TextSwitcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextSwitcher.app/Contents/MacOS/TextSwitcher";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFBEA1481AEAA2EA0089297C /* Build configuration list for PBXProject "TextSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFBEA1671AEAA2EA0089297C /* Debug */,
+				EFBEA1681AEAA2EA0089297C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFBEA1691AEAA2EA0089297C /* Build configuration list for PBXNativeTarget "TextSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFBEA16A1AEAA2EA0089297C /* Debug */,
+				EFBEA16B1AEAA2EA0089297C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFBEA16C1AEAA2EA0089297C /* Build configuration list for PBXNativeTarget "TextSwitcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFBEA16D1AEAA2EA0089297C /* Debug */,
+				EFBEA16E1AEAA2EA0089297C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFBEA1451AEAA2EA0089297C /* Project object */;
+}
