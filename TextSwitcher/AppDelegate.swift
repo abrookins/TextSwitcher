@@ -7,20 +7,27 @@
 //
 
 import Cocoa
+import QuartzCore
+import ApplicationServices
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        let keyMask: NSEventModifierFlags = .CommandKeyMask | .ControlKeyMask
+        let shortcut = MASShortcut(keyCode: UInt(kVK_Tab), modifierFlags: keyMask.rawValue)
+        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: displayWindowsInSpace)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+        MASShortcutMonitor.sharedMonitor().unregisterAllShortcuts()
     }
-
-
+    
+    func displayWindowsInSpace() {
+        let app = NSApplication.sharedApplication()
+        app.activateIgnoringOtherApps(true)
+        app.windows[0].makeKeyAndOrderFront(nil)
+    }
 }
 

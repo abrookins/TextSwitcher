@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,12 +641,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TextSwitcher" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
@@ -667,15 +667,43 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TextSwitcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" identifier=" " id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="993" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnN-vQ-SvE" customClass="TextSwitcherView" customModule="TextSwitcher" customModuleProvider="target">
+                                <rect key="frame" x="448" y="9" width="96" height="22"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="pot-MK-cwO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                                <connections>
+                                    <action selector="search:" target="XfG-lQ-9wD" id="YhW-Ot-HIO"/>
+                                </connections>
+                            </searchField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSG-gO-XkS">
+                                <rect key="frame" x="20" y="39" width="960" height="222"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" drawsBackground="YES" id="4W7-pr-c7b">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="searchField" destination="pot-MK-cwO" id="Jhk-ST-v11"/>
+                        <outlet property="searchFieldContainer" destination="wnN-vQ-SvE" id="9qC-IC-tmd"/>
+                        <outlet property="searchResult" destination="4W7-pr-c7b" id="T4h-n4-nbJ"/>
+                        <outlet property="searchView" destination="m2S-Jp-Qdl" id="xsy-79-FPB"/>
+                        <outlet property="view" destination="m2S-Jp-Qdl" id="aBO-kz-4Dg"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="-126.5" y="641"/>
         </scene>
     </scenes>
 </document>
