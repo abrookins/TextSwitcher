@@ -61,10 +61,6 @@ class ViewController: NSViewController {
         super.viewWillAppear()
     }
     
-    override func cancelOperation(sender: AnyObject?) {
-        println("WTF")
-    }
-    
     func clearResults() {
         searchResult.stringValue = ""
     }
