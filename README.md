@@ -1,11 +1,11 @@
 # TextSwitcher
 
-This app is essentially a text-based Command+Tab that works how I wish
-that command worked. Right now the keyboard shortcut is Command+Control+Tab.
-Pressing this from any application while TextSwitcher is open displays a
-window that allows you to filter a list of open windows by partial text-matching
-their names, and then press Control and the number key displayed next to the
-name of the window in the list to open it.
+This app is essentially a text-based Command+Tab that works how I wish that
+command worked. Right now the keyboard shortcut is Command+Control+Tab.
+Pressing this from any application while TextSwitcher is open displays a window
+that allows the user to filter a list of open windows by partial text-matching
+their names. Pressing Control and the number key displayed next to the name of
+the window in the list brings that window to the foreground.
 
 ## Architecture
 
@@ -41,12 +41,12 @@ name and owner); also it pairs down the list by removing menu bar items.
 
 #### Handling searches
 The controller receives text that the user searches for because it has an
-`IBAction` wired up to the `NSSearchFieldCell` in the storyboard.
+`IBAction` wired up to the `NSSearchFieldCell` in the app's storyboard.
 
-When this happens, it filters the list of windows to only those that have
-the text that the user typed in their name or owner name (like "Firefox"
-for the owner or the name of a particular window - usually the currently-
-displayed tab).
+When this happens, the controller filters the list of windows to those
+that have the text that the user typed in their name or owner name (like
+"Firefox" for the owner or the name of a particular window - usually the
+currently-displayed tab).
 
 #### Receiving Control+number presses
 A one-indexed number like (1) or (2) is displayed next to each window in the
@@ -55,7 +55,8 @@ from the list to bring on screen.
 
 For lack of finding the "right" approach to do this, `TextSwitcherView`
 receives all `keyUp` calls and checks to see if they included a Control
-key press. If they do, it passes the characters in a message
+key press. If they do, it passes the characters up the responder chain
+in the `chooseSearchResult:` message.
 
 The controller listens for this message and, when it is received, tries to find
 a window in the filtered list of windows whose index matches the number chosen
@@ -79,7 +80,7 @@ The app also doesn't actually bring the window the user chose to the foreground!
 It won't be hard to do that, but I haven't done it yet; for now it just opens
 the first available window for the app.
 
-It should run as a menu bar app, but I haven't build that yet. Perhaps because
+It should run as a menu bar app, but I haven't built that yet. Perhaps because
 of this, you can't simply open it from one Space, move to another Space, and
 then open it again with the global hotkey to use it from your new Space --
 since the window is open in another Space. The correct behavior is that
