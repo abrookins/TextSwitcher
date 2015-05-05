@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3BD5CC33-BA6B-49D6-BC77-37DB550FD02C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TextSwitcher</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>506E86A30F30B77CDDF8964B0AE4938351552C85</key>
+		<string>github.com:abrookins/TextSwitcher.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TextSwitcher.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>506E86A30F30B77CDDF8964B0AE4938351552C85</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:abrookins/TextSwitcher.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>506E86A30F30B77CDDF8964B0AE4938351552C85</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>506E86A30F30B77CDDF8964B0AE4938351552C85</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TextSwitcher</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		176159F1F0B3D6DBFD5EFB52 /* libPods-TextSwitcherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091DEEF0D4C07D911A3E4338 /* libPods-TextSwitcherTests.a */; };
 		8F03B55E7D3EDA583A120A92 /* libPods-TextSwitcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C65B82B4325CC2059467D8D5 /* libPods-TextSwitcher.a */; };
-		EF1281381AEEBB2E008D604E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1281371AEEBB2E008D604E /* AppView.swift */; };
-		EF1281391AEEBB2E008D604E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1281371AEEBB2E008D604E /* AppView.swift */; };
+		EF1281381AEEBB2E008D604E /* TextSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1281371AEEBB2E008D604E /* TextSwitcherView.swift */; };
+		EF1281391AEEBB2E008D604E /* TextSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1281371AEEBB2E008D604E /* TextSwitcherView.swift */; };
+		EFBB18401AF8709600751801 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EFBB183F1AF8709600751801 /* README.md */; };
 		EFBEA1531AEAA2EA0089297C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */; };
 		EFBEA1551AEAA2EA0089297C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEA1541AEAA2EA0089297C /* ViewController.swift */; };
 		EFBEA1571AEAA2EA0089297C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFBEA1561AEAA2EA0089297C /* Images.xcassets */; };
@@ -35,7 +36,8 @@
 		95C1F55AE3DADF3FF0E70549 /* Pods-TextSwitcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextSwitcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextSwitcher/Pods-TextSwitcher.debug.xcconfig"; sourceTree = "<group>"; };
 		9B5357A5989573CEECDB5EC6 /* Pods-TextSwitcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextSwitcherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextSwitcherTests/Pods-TextSwitcherTests.release.xcconfig"; sourceTree = "<group>"; };
 		C65B82B4325CC2059467D8D5 /* libPods-TextSwitcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TextSwitcher.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF1281371AEEBB2E008D604E /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		EF1281371AEEBB2E008D604E /* TextSwitcherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSwitcherView.swift; sourceTree = "<group>"; };
+		EFBB183F1AF8709600751801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		EFBEA14D1AEAA2EA0089297C /* TextSwitcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextSwitcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFBEA1511AEAA2EA0089297C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				EFBEA1541AEAA2EA0089297C /* ViewController.swift */,
-				EF1281371AEEBB2E008D604E /* AppView.swift */,
+				EF1281371AEEBB2E008D604E /* TextSwitcherView.swift */,
+				EFBB183F1AF8709600751801 /* README.md */,
 				EFBEA1521AEAA2EA0089297C /* AppDelegate.swift */,
 				EFBEA1561AEAA2EA0089297C /* Images.xcassets */,
 				EFBEA1581AEAA2EA0089297C /* Main.storyboard */,
@@ -313,7 +316,8 @@
 			files = (
 				EFBEA1551AEAA2EA0089297C /* ViewController.swift in Sources */,
 				EFBEA1531AEAA2EA0089297C /* AppDelegate.swift in Sources */,
-				EF1281381AEEBB2E008D604E /* AppView.swift in Sources */,
+				EFBB18401AF8709600751801 /* README.md in Sources */,
+				EF1281381AEEBB2E008D604E /* TextSwitcherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF1281391AEEBB2E008D604E /* AppView.swift in Sources */,
+				EF1281391AEEBB2E008D604E /* TextSwitcherView.swift in Sources */,
 				EFBEA1661AEAA2EA0089297C /* TextSwitcherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
