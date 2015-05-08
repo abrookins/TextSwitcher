@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func displayWindowsInSpace() {
         let app = NSApplication.sharedApplication()
+        app.unhide(nil)
         app.activateIgnoringOtherApps(true)
         app.windows[0].makeKeyAndOrderFront(nil)
     }

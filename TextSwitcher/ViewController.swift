@@ -75,6 +75,8 @@ class ViewController: NSViewController {
         
         if let pid = result["pid"]?.toInt(), windowName = result["name"] {
             AccessibilityWrapper.openWindow(pid, windowName: windowName)
+            let app = NSApplication.sharedApplication()
+            app.hide(nil)
         }
     }
 
