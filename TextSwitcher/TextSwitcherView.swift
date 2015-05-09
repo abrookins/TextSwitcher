@@ -7,6 +7,8 @@
 //
 
 import AppKit
+import Carbon
+
 
 class TextSwitcherView: NSSearchField {
 
@@ -14,15 +16,18 @@ class TextSwitcherView: NSSearchField {
     var chosenResult: String = ""
 
     override func keyUp(theEvent: NSEvent) {
-        let keyMask: NSEventModifierFlags = .ControlKeyMask
-        let hasModifier = theEvent.modifierFlags & keyMask != nil
+        let hasModifier = theEvent.modifierFlags & NSEventModifierFlags.ControlKeyMask != nil
+        let isReturnKey = theEvent.keyCode == UInt16(kVK_Return)
+        let chooseResult = Selector(chooseSearchResultAction)
         chosenResult = ""
-
+        
         if hasModifier {
             chosenResult = theEvent.charactersIgnoringModifiers!
-            sendAction(Selector(chooseSearchResultAction), to: target)
+            sendAction(chooseResult, to: target)
+        } else if isReturnKey {
+            sendAction(chooseResult, to: target)
         }
-
+        
         super.keyUp(theEvent)
     }
 }

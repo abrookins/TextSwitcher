@@ -10,10 +10,22 @@ import Cocoa
 import QuartzCore
 import ApplicationServices
 
+let ApplicationWasActivated = "ts:activationWasActivated"
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    @IBOutlet weak var window: NSWindow!
+    
+    var statusBar = NSStatusBar.systemStatusBar()
+    var statusBarItem : NSStatusItem = NSStatusItem()
 
+    override func awakeFromNib() {
+        statusBarItem = statusBar.statusItemWithLength(-1)
+        statusBarItem.title = "TS"
+    }
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let keyMask: NSEventModifierFlags = .CommandKeyMask | .ControlKeyMask
         let shortcut = MASShortcut(keyCode: UInt(kVK_Tab), modifierFlags: keyMask.rawValue)
@@ -24,11 +36,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         MASShortcutMonitor.sharedMonitor().unregisterAllShortcuts()
     }
     
+    func applicationWillBecomeActive(notification: NSNotification) {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotification(NSNotification(name:ApplicationWasActivated, object:notificationCenter))
+    }
+    
     func displayWindowsInSpace() {
         let app = NSApplication.sharedApplication()
-        app.unhide(nil)
         app.activateIgnoringOtherApps(true)
-        app.windows[0].makeKeyAndOrderFront(nil)
+        // Window 0 is the menubar window, window 1 is the app window.
+        app.windows[1].makeKeyAndOrderFront(nil)
+        app.windows[1].orderFront(self)
     }
 }
 

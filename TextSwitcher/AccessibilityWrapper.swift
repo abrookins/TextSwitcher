@@ -12,6 +12,7 @@ import Foundation
 class AccessibilityWrapper {
     class func buildWindowDicts(windows: [AnyObject]) -> [Dictionary<String,String>] {
         var windowDicts = [Dictionary<String,String>]()
+        println(windows)
         for window in windows {
             let ownerNameKey = kCGWindowOwnerName as String
             let windowNameKey = kCGWindowName as String
@@ -23,10 +24,11 @@ class AccessibilityWrapper {
                     
                 // Windows named "TextSwitcher" are this app.
                 // Windows named "Menubar" are not windows. ;)
-                let ignoredApps = Set(["Menubar", "TextSwitcher"])
+                let ignoredApps = Set(["Menubar", "TextSwitcher", "SystemUIServer"])
+                // Windows we will show even though they don't have a name (???)
+                let includedApps = Set(["Messages"])
                     
-                // Windows without a name appear to be menu items or backgrounded.
-                if !name.isEmpty && !ignoredApps.contains(name) && !ignoredApps.contains(owner) {
+                if includedApps.contains(owner) || !name.isEmpty && !ignoredApps.contains(name) && !ignoredApps.contains(owner) {
                     windowDicts.append([
                         "owner": owner,
                         "name": name,
@@ -55,9 +57,10 @@ class AccessibilityWrapper {
         let appRef: AXUIElement = AXUIElementCreateApplication(pid).takeRetainedValue()
         let systemWideElement : AXUIElement = AXUIElementCreateSystemWide().takeRetainedValue()
         let windowListRef = UnsafeMutablePointer<Unmanaged<AnyObject>?>.alloc(1)
+
+        AXUIElementCopyAttributeValue(appRef, kAXWindowsAttribute, windowListRef)
         
-        AXUIElementCopyAttributeValue(appRef, kAXWindowsAttribute, windowListRef);
-        
+        // XXX: I can't figure out how to unwrap these two values. Xcode hates me no matter what I do.
         let windowList: CFArray = windowListRef.memory!.takeRetainedValue() as! CFArray
         
         if CFArrayGetCount(windowList) < 1 {
@@ -67,6 +70,6 @@ class AccessibilityWrapper {
         // TODO: Use windowName to open the window with that name.
         let windowRef: AXUIElement = unsafeBitCast(CFArrayGetValueAtIndex(windowList, 0), AXUIElement.self)
         
-        AXUIElementPerformAction(windowRef, kAXRaiseAction)
+        AXUIElementPerformAction(windowRef, kAXRaiseAction)           
     }
 }

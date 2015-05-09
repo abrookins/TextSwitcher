@@ -21,6 +21,11 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         doSearch("")
         searchFieldContainer.becomeFirstResponder()
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("viewWasActivated"),
+            name: ApplicationWasActivated, object: notificationCenter)
+        
         super.viewDidLoad()
     }
     
@@ -28,6 +33,18 @@ class ViewController: NSViewController {
         doSearch("")
         searchFieldContainer.becomeFirstResponder()
         super.viewWillAppear()
+    }
+    
+    override func viewDidLayout() {
+        doSearch("")
+        searchFieldContainer.becomeFirstResponder()
+        super.viewDidLayout()
+    }
+    
+    func viewWasActivated() {
+        println("received active notification")
+        doSearch("")
+        searchFieldContainer.becomeFirstResponder()
     }
     
     func clearResults() {
@@ -70,29 +87,39 @@ class ViewController: NSViewController {
         }
     }
     
-    func doOpenItem(index: Int) {
-        let result = lastSearchResults[index]
-        
-        if let pid = result["pid"]?.toInt(), windowName = result["name"] {
-            AccessibilityWrapper.openWindow(pid, windowName: windowName)
-            let app = NSApplication.sharedApplication()
-            app.hide(nil)
+    func doOpenItem(index: Int = 0) {
+        if lastSearchResults.count > 0 {
+            let result = lastSearchResults[index]
+            
+            if let pid = result["pid"]?.toInt(), windowName = result["name"] {
+                let app = NSApplication.sharedApplication()
+                AccessibilityWrapper.openWindow(pid, windowName: windowName)
+                if let window = app.mainWindow {
+                    window.orderOut(self)
+                }
+            }           
         }
     }
-
+    
     @IBAction func search(sender: NSSearchFieldCell) {
         doSearch(sender.stringValue)
     }
     
     @IBAction func chooseSearchResult(sender: TextSwitcherView) {
         var index = sender.chosenResult
-        if !index.isEmpty {
-            // Negate one because the display indexes are 1-based
-            // while the actual array index is zero-based.
+        // We assume that they pressed the enter key, so just open
+        // the top item in the search results.
+        if index.isEmpty {
+            doOpenItem()
+            return
+        }
+        // Negate one because the display indexes are 1-based
+        // while the actual array index is zero-based.
+        if let onIndexed = index.toInt() {
             let oneIndexed = index.toInt()!
             let zeroIndexed = oneIndexed < 1 ? 0 : oneIndexed - 1
             println("displayindex: \(oneIndexed) zeroindexed: \(zeroIndexed)")
-            doOpenItem(zeroIndexed)
+            doOpenItem(index: zeroIndexed)
         }
     }
 }
