@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let keyMask: NSEventModifierFlags = .CommandKeyMask | .ControlKeyMask
         let shortcut = MASShortcut(keyCode: UInt(kVK_Tab), modifierFlags: keyMask.rawValue)
-        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: displayWindowsInSpace)
+        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: bringToForeground)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -41,12 +41,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         notificationCenter.postNotification(NSNotification(name:ApplicationWasActivated, object:notificationCenter))
     }
     
-    func displayWindowsInSpace() {
+    func bringToForeground() {
         let app = NSApplication.sharedApplication()
         app.activateIgnoringOtherApps(true)
         // Window 0 is the menubar window, window 1 is the app window.
         app.windows[1].makeKeyAndOrderFront(nil)
         app.windows[1].orderFront(self)
+        if let theWindow = window {
+            println("centering")
+            theWindow.center()
+        }
     }
 }
 

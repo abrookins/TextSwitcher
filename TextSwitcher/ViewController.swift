@@ -42,7 +42,6 @@ class ViewController: NSViewController {
     }
     
     func viewWasActivated() {
-        println("received active notification")
         doSearch("")
         searchFieldContainer.becomeFirstResponder()
     }
@@ -58,7 +57,10 @@ class ViewController: NSViewController {
             if let owner = window["owner"], name = window["name"] {
                 // Show idx+1 to avoid using 0, which is hard to press with Control
                 // and is also the last key on most keyboards, rather than the first.
-                results += "(\(idx + 1)) \(owner): \(name)\n"
+                results += "(\(idx + 1)) \(owner)"
+                if !name.isEmpty {
+                    results += ": \(name)\n"
+                }
             }
         }
         
@@ -92,13 +94,22 @@ class ViewController: NSViewController {
             let result = lastSearchResults[index]
             
             if let pid = result["pid"]?.toInt(), windowName = result["name"] {
-                let app = NSApplication.sharedApplication()
-                AccessibilityWrapper.openWindow(pid, windowName: windowName)
-                if let window = app.mainWindow {
-                    window.orderOut(self)
-                }
-            }           
+                AccessibilityWrapper.openWindow(forApplicationWithPid: pid, named: windowName)
+                doCancel()
+            }
         }
+    }
+    
+    // Close the window.
+    func doCancel() {
+        let app = NSApplication.sharedApplication()
+        if let window = app.mainWindow {
+            window.orderOut(self)
+        }
+    }
+    
+    @IBAction func cancel(sender: NSSearchFieldCell) {
+        doCancel()
     }
     
     @IBAction func search(sender: NSSearchFieldCell) {
@@ -118,7 +129,6 @@ class ViewController: NSViewController {
         if let onIndexed = index.toInt() {
             let oneIndexed = index.toInt()!
             let zeroIndexed = oneIndexed < 1 ? 0 : oneIndexed - 1
-            println("displayindex: \(oneIndexed) zeroindexed: \(zeroIndexed)")
             doOpenItem(index: zeroIndexed)
         }
     }
