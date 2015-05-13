@@ -97,6 +97,8 @@ class AccessibilityWrapper {
             if let title = titleValue.memory?.takeRetainedValue() as? String {
                 if title == windowName {
                     AXUIElementPerformAction(windowRef, kAXRaiseAction)
+                    AXUIElementSetAttributeValue(windowRef, kAXFrontmostAttribute, kCFBooleanTrue);
+                    AXUIElementSetAttributeValue(appRef, kAXFrontmostAttribute, kCFBooleanTrue);
                 }
             }
         }

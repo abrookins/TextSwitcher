@@ -670,11 +670,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TextSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" identifier=" " wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="993" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1403" height="283"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSG-gO-XkS">
-                                <rect key="frame" x="0.0" y="20" width="993" height="266"/>
+                                <rect key="frame" x="0.0" y="20" width="1403" height="266"/>
                                 <textFieldCell key="cell" continuous="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" drawsBackground="YES" id="4W7-pr-c7b">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -682,7 +682,7 @@
                                 </textFieldCell>
                             </textField>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnN-vQ-SvE" customClass="TextSwitcherView" customModule="TextSwitcher" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="993" height="22"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1403" height="17"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" alignment="center" drawsBackground="YES" usesSingleLineMode="YES" sendsSearchStringImmediately="YES" id="pot-MK-cwO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -704,7 +704,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.5" y="648.5"/>
+            <point key="canvasLocation" x="233.5" y="648.5"/>
         </scene>
     </scenes>
 </document>
