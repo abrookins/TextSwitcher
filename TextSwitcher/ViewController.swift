@@ -10,16 +10,17 @@ import Cocoa
 import Foundation
 
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var searchResult: NSTextFieldCell!
     @IBOutlet weak var searchField: NSSearchFieldCell!
+    @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var searchFieldContainer: NSSearchField!
     @IBOutlet var searchView: NSView!
     
-    var lastSearchResults: [Dictionary<String,String>] = []
+    var windows: [Dictionary<String,String>] = []
     
     override func viewDidLoad() {
-        doSearch("")
+        resetWindows()
         searchFieldContainer.becomeFirstResponder()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -30,74 +31,77 @@ class ViewController: NSViewController {
     }
     
     override func viewDidAppear() {
-        doSearch("")
+        resetWindows()
         searchFieldContainer.becomeFirstResponder()
         super.viewWillAppear()
     }
     
     override func viewDidLayout() {
-        doSearch("")
+        resetWindows()
         searchFieldContainer.becomeFirstResponder()
         super.viewDidLayout()
     }
     
     func viewWasActivated() {
-        doSearch("")
+        resetWindows()
         searchFieldContainer.becomeFirstResponder()
     }
     
-    func clearResults() {
-        searchResult.stringValue = ""
-    }
-    
-    func displayResults() {
-        var results = ""
-        
-        for (idx, window) in enumerate(self.lastSearchResults) {
-            if let owner = window["owner"], name = window["name"] {
-                // Show idx+1 to avoid using 0, which is hard to press with Control
-                // and is also the last key on most keyboards, rather than the first.
-                results += "(\(idx + 1)) \(owner)"
-                if !name.isEmpty {
-                    results += ": \(name)\n"
-                }
-            }
+    func resetWindows() {
+        if let _windows = AccessibilityWrapper.windowsInCurrentSpace() {
+            windows = _windows
+            tableView.reloadData()
         }
-        
-        searchResult.stringValue = results
     }
     
     func doSearch(text: String) {
-        clearResults()
-        if let windows = AccessibilityWrapper.windowsInCurrentSpace() {
-            let lowerText = text.lowercaseString
-            
-            if text.isEmpty {
-                self.lastSearchResults = windows
-                displayResults()
+        let lowerText = text.lowercaseString
+        windows = windows.filter { (window) in
+            if let name = window["name"], owner = window["owner"] {
+                return name.lowercaseString.rangeOfString(lowerText) != nil ||
+                    owner.lowercaseString.rangeOfString(lowerText) != nil
             }
-            else {
-                self.lastSearchResults = windows.filter { (window) in
-                    if let name = window["name"], owner = window["owner"] {
-                        return name.lowercaseString.rangeOfString(lowerText) != nil ||
-                            owner.lowercaseString.rangeOfString(lowerText) != nil
-                    }
-                    return false
-                }
-                displayResults()
-            }
+            return false
         }
+        tableView.reloadData()
     }
     
     func doOpenItem(index: Int = 0) {
-        if lastSearchResults.count > 0 {
-            let result = lastSearchResults[index]
+        if windows.count > 0 {
+            let result = windows[index]
             
             if let pid = result["pid"]?.toInt(), windowName = result["name"] {
                 AccessibilityWrapper.openWindow(forApplicationWithPid: pid, named: windowName)
                 doCancel()
             }
         }
+    }
+    
+    func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
+        return windows.count
+    }
+    
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        var cellIdentifier = ""
+        
+        if let columnIdentifier = tableColumn?.identifier {
+            if columnIdentifier == "ownerColumn" {
+                cellIdentifier = "owner"
+            }
+            else if columnIdentifier == "nameColumn" {
+                cellIdentifier = "name"
+            }
+            if let result = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
+                var value = windows[row][cellIdentifier]!
+                if cellIdentifier == "owner" {
+                    // Give the user a one-indexed value for hitting Control+<Index> to open the window
+                    value = "⌘\(row + 1) | \(value)"
+                }
+                result.textField!.stringValue = value
+                return result
+            }
+        }
+        return nil
     }
     
     // Close the window.
@@ -113,6 +117,10 @@ class ViewController: NSViewController {
     }
     
     @IBAction func search(sender: NSSearchFieldCell) {
+        resetWindows()
+        if sender.stringValue.isEmpty {
+            return
+        }
         doSearch(sender.stringValue)
     }
     

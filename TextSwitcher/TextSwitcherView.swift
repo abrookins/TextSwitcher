@@ -17,11 +17,10 @@ class TextSwitcherView: NSSearchField {
     var chosenResult: String = ""
 
     override func keyUp(theEvent: NSEvent) {
-        let hasModifier = theEvent.modifierFlags & NSEventModifierFlags.ControlKeyMask != nil
         let isReturnKey = theEvent.keyCode == UInt16(kVK_Return)
         let isEscapeKey = theEvent.keyCode == UInt16(kVK_Escape)
-        let chooseResult = Selector(chooseSearchResultAction)
         let cancel = Selector(cancelAction)
+        let chooseResult = Selector(chooseSearchResultAction)
         chosenResult = ""
         
         if isEscapeKey {
@@ -34,13 +33,22 @@ class TextSwitcherView: NSSearchField {
                 }
             }
         }
-        if hasModifier {
-            chosenResult = theEvent.charactersIgnoringModifiers!
-            sendAction(chooseResult, to: target)
-        } else if isReturnKey {
+        else if isReturnKey {
             sendAction(chooseResult, to: target)
         }
         
         super.keyUp(theEvent)
+    }
+    
+    override func performKeyEquivalent(theEvent: NSEvent) -> Bool {
+        let chooseResult = Selector(chooseSearchResultAction)
+        let usingCommandKey = theEvent.modifierFlags & NSEventModifierFlags.CommandKeyMask != nil
+        
+        if usingCommandKey {
+            chosenResult = theEvent.charactersIgnoringModifiers!
+            sendAction(chooseResult, to: target)
+            return false
+        }
+        return true
     }
 }

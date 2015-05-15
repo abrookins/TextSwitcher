@@ -16,8 +16,6 @@ let ApplicationWasActivated = "ts:activationWasActivated"
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    @IBOutlet weak var window: NSWindow!
-    
     var statusBar = NSStatusBar.systemStatusBar()
     var statusBarItem : NSStatusItem = NSStatusItem()
 
@@ -27,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let keyMask: NSEventModifierFlags = .CommandKeyMask | .ControlKeyMask
+        let keyMask: NSEventModifierFlags = .AlternateKeyMask
         let shortcut = MASShortcut(keyCode: UInt(kVK_Tab), modifierFlags: keyMask.rawValue)
         MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: bringToForeground)
     }
@@ -47,10 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Window 0 is the menubar window, window 1 is the app window.
         app.windows[1].makeKeyAndOrderFront(nil)
         app.windows[1].orderFront(self)
-        if let theWindow = window {
-            println("centering")
-            theWindow.center()
-        }
     }
 }
 
