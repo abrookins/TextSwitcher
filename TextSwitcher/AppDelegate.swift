@@ -37,6 +37,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillBecomeActive(notification: NSNotification) {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotification(NSNotification(name:ApplicationWasActivated, object:notificationCenter))
+        center()
+    }
+
+    func center() {
+        let app = NSApplication.sharedApplication()
+        // Window 0 is the menubar window, window 1 is the app window.
+        app.windows[1].center()
     }
     
     func bringToForeground() {
@@ -45,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Window 0 is the menubar window, window 1 is the app window.
         app.windows[1].makeKeyAndOrderFront(nil)
         app.windows[1].orderFront(self)
+        center()
     }
 }
 

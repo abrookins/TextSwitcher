@@ -653,8 +653,7 @@
                     <window key="window" title="TextSwitcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA" userLabel="l">
                         <windowStyleMask key="styleMask" titled="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="585" y="499" width="480" height="270"/>
+                        <rect key="contentRect" x="0.0" y="495" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -759,7 +758,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="LCc-uH-Fpg">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="LCc-uH-Fpg">
                                     <rect key="frame" x="1" y="117.46996903419495" width="237" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -791,7 +790,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="691"/>
+            <point key="canvasLocation" x="-396" y="659"/>
         </scene>
     </scenes>
 </document>

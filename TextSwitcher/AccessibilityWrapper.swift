@@ -11,7 +11,6 @@ import Foundation
 
 // A wrapper around C Accessibility APIs that TextSwitcher uses.
 class AccessibilityWrapper {
-    
 
     // A helper method that builds a Dictionary of Strings from the
     // C-typed objects that CGWindowListCopyWindowInfo returned.
