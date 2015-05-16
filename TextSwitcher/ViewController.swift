@@ -91,13 +91,32 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             else if columnIdentifier == "nameColumn" {
                 cellIdentifier = "name"
             }
+            else if columnIdentifier == "imageColumn" {
+                cellIdentifier = "appImage"
+            }
             if let result = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
-                var value = windows[row][cellIdentifier]!
-                if cellIdentifier == "owner" {
-                    // Give the user a one-indexed value for hitting Control+<Index> to open the window
-                    value = "⌘\(row + 1) | \(value)"
+                if cellIdentifier == "appImage" {
+                    if let windowPid = windows[row]["pid"],
+                            pid = windowPid.toInt(),
+                            app = NSRunningApplication(processIdentifier: pid_t(pid)),
+                            appIcon = app.icon,
+                            imageView = result.imageView {
+                        imageView.image = appIcon
+                    }
                 }
-                result.textField!.stringValue = value
+                else {
+                    var value: String
+                    if let valueBeforeCommandHint = windows[row][cellIdentifier] {
+                        if cellIdentifier == "owner" {
+                            // Give the user a one-indexed value for hitting Control+<Index> to open the window
+                            value = "⌘\(row + 1) | \(valueBeforeCommandHint)"
+                        }
+                        else {
+                            value = valueBeforeCommandHint
+                        }
+                        result.textField!.stringValue = value
+                    }
+                }
                 return result
             }
         }
