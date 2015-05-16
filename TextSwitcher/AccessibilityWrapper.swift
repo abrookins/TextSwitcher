@@ -25,8 +25,8 @@ class WindowData {
 // A wrapper around C Accessibility APIs that TextSwitcher uses.
 class AccessibilityWrapper {
 
-    // A helper method that builds a Dictionary of Strings from the
-    // C-typed objects that CGWindowListCopyWindowInfo returned.
+    // A helper method that builds an array of WindowData objects from
+    // the C types that CGWindowListCopyWindowInfo returns.
     // TODO: Exclusions and ignored apps should be parameterized.
     class func buildWindowDicts(windows: [AnyObject]) -> [WindowData] {
         var data = [WindowData]()
