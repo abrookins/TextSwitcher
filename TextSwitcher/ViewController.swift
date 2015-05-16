@@ -17,7 +17,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     @IBOutlet weak var searchFieldContainer: NSSearchField!
     @IBOutlet var searchView: NSView!
     
-    var windows: [Dictionary<String,String>] = []
+    var windows: [WindowData] = []
     
     override func viewDidLoad() {
         resetWindows()
@@ -57,23 +57,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     func doSearch(text: String) {
         let lowerText = text.lowercaseString
         windows = windows.filter { (window) in
-            if let name = window["name"], owner = window["owner"] {
-                return name.lowercaseString.rangeOfString(lowerText) != nil ||
-                    owner.lowercaseString.rangeOfString(lowerText) != nil
-            }
-            return false
+            return window.name.lowercaseString.rangeOfString(lowerText) != nil ||
+                window.owner.lowercaseString.rangeOfString(lowerText) != nil
         }
         tableView.reloadData()
     }
     
     func doOpenItem(index: Int = 0) {
         if windows.count > 0 {
-            let result = windows[index]
-            
-            if let pid = result["pid"]?.toInt(), windowName = result["name"] {
-                AccessibilityWrapper.openWindow(forApplicationWithPid: pid, named: windowName)
-                doCancel()
-            }
+            let window = windows[index]
+            doCancel()
+            AccessibilityWrapper.openWindow(forApplicationWithPid: window.pid, named: window.name)
         }
     }
     
@@ -81,43 +75,51 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         return windows.count
     }
     
+    func makeIconTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellIdentifier = "appImage"
+        if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
+            if let app = NSRunningApplication(processIdentifier: pid_t(windows[row].pid)),
+                    appIcon = app.icon,
+                    imageView = cellView.imageView {
+                imageView.image = appIcon
+            }
+            return cellView
+        }
+        return nil
+    }
+
+    func makeOwnerTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellIdentifier = "owner"
+        if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
+            let window = windows[row]
+            let valueBeforeCommandHint = window.owner
+            // Give the user a one-indexed value for hitting Control+<Index> to open the window
+            cellView.textField!.stringValue = "⌘\(row + 1) | \(valueBeforeCommandHint)"
+            return cellView
+        }
+        return nil
+    }
+
+    func makeNameTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellIdentifier = "name"
+        if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
+            let window = windows[row]
+            cellView.textField!.stringValue = window.name
+            return cellView
+        }
+        return nil
+    }
+
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        var cellIdentifier = ""
-        
         if let columnIdentifier = tableColumn?.identifier {
             if columnIdentifier == "ownerColumn" {
-                cellIdentifier = "owner"
+                return makeOwnerTableCell(tableView, viewForTableColumn: tableColumn, row: row)
             }
             else if columnIdentifier == "nameColumn" {
-                cellIdentifier = "name"
+                return makeNameTableCell(tableView, viewForTableColumn: tableColumn, row: row)
             }
             else if columnIdentifier == "imageColumn" {
-                cellIdentifier = "appImage"
-            }
-            if let result = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
-                if cellIdentifier == "appImage" {
-                    if let windowPid = windows[row]["pid"],
-                            pid = windowPid.toInt(),
-                            app = NSRunningApplication(processIdentifier: pid_t(pid)),
-                            appIcon = app.icon,
-                            imageView = result.imageView {
-                        imageView.image = appIcon
-                    }
-                }
-                else {
-                    var value: String
-                    if let valueBeforeCommandHint = windows[row][cellIdentifier] {
-                        if cellIdentifier == "owner" {
-                            // Give the user a one-indexed value for hitting Control+<Index> to open the window
-                            value = "⌘\(row + 1) | \(valueBeforeCommandHint)"
-                        }
-                        else {
-                            value = valueBeforeCommandHint
-                        }
-                        result.textField!.stringValue = value
-                    }
-                }
-                return result
+                return makeIconTableCell(tableView, viewForTableColumn: tableColumn, row: row)
             }
         }
         return nil

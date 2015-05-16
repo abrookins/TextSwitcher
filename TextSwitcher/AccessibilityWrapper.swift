@@ -9,14 +9,27 @@
 import Foundation
 
 
+class WindowData {
+    var owner: String = ""
+    var name: String = ""
+    var pid: Int = 0
+
+    init(owner: String, name: String, pid: Int) {
+        self.owner = owner
+        self.name = name
+        self.pid = pid
+    }
+}
+
+
 // A wrapper around C Accessibility APIs that TextSwitcher uses.
 class AccessibilityWrapper {
 
     // A helper method that builds a Dictionary of Strings from the
     // C-typed objects that CGWindowListCopyWindowInfo returned.
     // TODO: Exclusions and ignored apps should be parameterized.
-    class func buildWindowDicts(windows: [AnyObject]) -> [Dictionary<String,String>] {
-        var windowDicts = [Dictionary<String,String>]()
+    class func buildWindowDicts(windows: [AnyObject]) -> [WindowData] {
+        var data = [WindowData]()
         for window in windows {
             let ownerNameKey = kCGWindowOwnerName as String
             let windowNameKey = kCGWindowName as String
@@ -31,8 +44,8 @@ class AccessibilityWrapper {
             }
             
             if let owner = window[ownerNameKey] as? String,
-                name = window[windowNameKey] as? String,
-                pid = window[pidKey] as? Int {
+                    name = window[windowNameKey] as? String,
+                    pid = window[pidKey] as? Int {
                     
                 // Windows named "TextSwitcher" are this app.
                 // Windows named "Menubar" are not windows.
@@ -42,23 +55,30 @@ class AccessibilityWrapper {
                 let includedApps = Set(["Messages"])
                     
                 if includedApps.contains(owner) || !ignoredApps.contains(name) && !ignoredApps.contains(owner) {
-                    windowDicts.append([
-                        "owner": owner,
-                        "name": name,
-                        "pid": String(pid)
-                    ])
+                    data.append(WindowData(owner: owner, name: name, pid: Int(pid)))
                 }
             }
         }
-        return windowDicts
+        return data
     }
 
     // Get data about windows in the current space.
-    class func windowsInCurrentSpace() -> [Dictionary<String,String>]? {
+    class func windowsInCurrentSpace() -> [WindowData]? {
         // get an array of all the windows in the current Space
         // Note: CGWindowID(0) == kCGNullWindowID
         let windowInfosRef = CGWindowListCopyWindowInfo(CGWindowListOption(
             kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements), CGWindowID(0))
+        let windowInfos = windowInfosRef.takeRetainedValue() as [AnyObject]
+        if let windowsDowncasted = windowInfos as? [NSDictionary] {
+            return buildWindowDicts(windowsDowncasted)
+        }
+        return nil
+    }
+    
+    class func windowsBelowCurrent() -> [WindowData]? {
+        let windowInfosRef = CGWindowListCopyWindowInfo(CGWindowListOption(
+            kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements | kCGWindowListOptionOnScreenBelowWindow),
+            CGWindowID(0))
         let windowInfos = windowInfosRef.takeRetainedValue() as [AnyObject]
         if let windowsDowncasted = windowInfos as? [NSDictionary] {
             return buildWindowDicts(windowsDowncasted)
