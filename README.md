@@ -1,5 +1,7 @@
 # TextSwitcher
 
+![Screenshot](https://raw.githubusercontent.com/abrookins/TextSwitcher/master/screenshots/openwindow.png)
+
 This app is essentially a text-based Command+Tab that works how I wish that
 command worked. Right now the keyboard shortcut is Option+Tab.
 
