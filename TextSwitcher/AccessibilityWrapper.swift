@@ -85,6 +85,15 @@ class AccessibilityWrapper {
         }
         return nil
     }
+
+    class func raiseWindow(windowRef: AXUIElement) {
+        AXUIElementPerformAction(windowRef, kAXRaiseAction)
+        AXUIElementSetAttributeValue(windowRef, kAXFrontmostAttribute, kCFBooleanTrue);
+    }
+
+    class func windowAtIndex(i: Int, fromWindows windows: CFArray) -> AXUIElement {
+        return unsafeBitCast(CFArrayGetValueAtIndex(windows, i), AXUIElement.self)
+    }
     
     // Open the first window for an application with `applicationPid` whose title matches
     // `windowName`.
@@ -102,24 +111,31 @@ class AccessibilityWrapper {
         // XXX: I can't figure out how to unwrap these two values. Xcode hates me no matter what I do.
         let windows: CFArray = windowListRef.memory!.takeRetainedValue() as! CFArray
         let numWindows = CFArrayGetCount(windows)
+
+        // Whether or not we found a title match. If we don't, we'll try to show the first app window.
+        var foundMatch = false
         
         if numWindows == 0 {
             return
         }
         
         for var i = 0; i < numWindows; i++ {
-            let windowRef: AXUIElement = unsafeBitCast(CFArrayGetValueAtIndex(windows, i), AXUIElement.self)
+            let windowRef = windowAtIndex(i, fromWindows: windows)
             let titleValue = UnsafeMutablePointer<Unmanaged<AnyObject>?>.alloc(1)
             
             AXUIElementCopyAttributeValue(windowRef, kAXTitleAttribute, titleValue);
             
             if let title = titleValue.memory?.takeRetainedValue() as? String {
                 if title == windowName {
-                    AXUIElementPerformAction(windowRef, kAXRaiseAction)
-                    AXUIElementSetAttributeValue(windowRef, kAXFrontmostAttribute, kCFBooleanTrue);
-                    AXUIElementSetAttributeValue(appRef, kAXFrontmostAttribute, kCFBooleanTrue);
+                    raiseWindow(windowRef)
+                    foundMatch = true
                 }
             }
         }
+        if !foundMatch {
+            let windowRef = windowAtIndex(0, fromWindows: windows)
+            raiseWindow(windowRef)
+        }
+        AXUIElementSetAttributeValue(appRef, kAXFrontmostAttribute, kCFBooleanTrue);
     }
 }
