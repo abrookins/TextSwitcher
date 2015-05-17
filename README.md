@@ -9,10 +9,9 @@ This app is essentially a text-based Command+Tab that works how I wish that comm
 allows the user to filter a list of open windows by partial text-matching against the window
 title or application name.
 
-* Pressing Command and the number key displayed next to the name of the window in the
-list brings that window to the foreground.
+* Pressing Command and the number key displayed next to an item in the list brings that window to the foreground.
 
-* Pressing Enter brings the top-most item in the list to the foreground.
+* Pressing Enter brings the top-most window in the list to the foreground.
 
 * Pressing Escape clears the current search or hides the app if there is no current search.
 
