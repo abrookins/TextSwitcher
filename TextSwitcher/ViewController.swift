@@ -18,7 +18,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     @IBOutlet var searchView: NSView!
     
     var windows: [WindowData] = []
-    
+
     override func viewDidLoad() {
         resetWindows()
         searchFieldContainer.becomeFirstResponder()
@@ -48,7 +48,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     func resetWindows() {
-        if let _windows = AccessibilityWrapper.windowsInCurrentSpace() {
+        if var _windows = AccessibilityWrapper.windowsInCurrentSpace() {
+            if _windows.count > 1 {
+                // Swap the first and second items, like Command-Tab does.
+                let firstItem = _windows.removeAtIndex(0)
+                let secondItem = _windows.removeAtIndex(0)
+                _windows.insert(secondItem, atIndex: 0)
+                _windows.insert(firstItem, atIndex: 1)
+            }
             windows = _windows
             tableView.reloadData()
         }
