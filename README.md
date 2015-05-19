@@ -83,5 +83,6 @@ low-level Accessibility API functions.
 ## Current problems
 * No tests
 * If instead of choosing a window, you hit Escape to close TextSwitcher, the window you were on before is not refocused
+* Should pressing the keyboard shortcut to launch the app while it is already on screen return you to the window you were on when you opened the app?
 * Runs as a menu bar app, but you can't quit it or view preferences
 * Ideally it would show separate lists of applications, one for each open space, not just the current one
