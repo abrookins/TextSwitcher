@@ -74,7 +74,7 @@ class AccessibilityWrapper {
         }
         return nil
     }
-    
+
     class func windowsBelowCurrent() -> [WindowData]? {
         let windowInfosRef = CGWindowListCopyWindowInfo(CGWindowListOption(
             kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements | kCGWindowListOptionOnScreenBelowWindow),

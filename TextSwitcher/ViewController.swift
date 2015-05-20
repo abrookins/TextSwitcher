@@ -71,7 +71,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     func doOpenItem(index: Int = 0) {
-        if windows.count > 0 {
+        let count = windows.count
+        let indexExists = index <= count - 1
+        if count > 0 && indexExists  {
             let window = windows[index]
             doCancel()
             AccessibilityWrapper.openWindow(forApplicationWithPid: window.pid, named: window.name)
@@ -85,10 +87,11 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     func makeIconTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellIdentifier = "appImage"
         if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
-            if let app = NSRunningApplication(processIdentifier: pid_t(windows[row].pid)),
-                    appIcon = app.icon,
-                    imageView = cellView.imageView {
-                imageView.image = appIcon
+            let window = windows[row]
+            if let app = NSRunningApplication(processIdentifier: pid_t(window.pid)),
+                appIcon = app.icon,
+                imageView = cellView.imageView {
+                    imageView.image = appIcon
             }
             return cellView
         }
