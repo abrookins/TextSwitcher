@@ -11,42 +11,51 @@ import Foundation
 
 
 class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
-    @IBOutlet weak var searchResult: NSTextFieldCell!
-    @IBOutlet weak var searchField: NSSearchFieldCell!
+    @IBOutlet weak var searchField: NSTextField!
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var searchFieldContainer: NSSearchField!
     @IBOutlet var searchView: NSView!
-    
+    @IBOutlet weak var scrollView: NSScrollView!
+
     var windows: [WindowData] = []
+    var incomingWindow: WindowData? = nil
 
     override func viewDidLoad() {
-        resetWindows()
-        searchFieldContainer.becomeFirstResponder()
-        
+        super.viewDidLoad()
+        focusSearchField()
+
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: Selector("viewWasActivated"),
             name: ApplicationWasActivated, object: notificationCenter)
-        
-        super.viewDidLoad()
     }
     
     override func viewDidAppear() {
-        resetWindows()
-        searchFieldContainer.becomeFirstResponder()
         super.viewWillAppear()
+        resetSearch()
+        focusSearchField()
     }
-    
+
     override func viewDidLayout() {
-        resetWindows()
-        searchFieldContainer.becomeFirstResponder()
         super.viewDidLayout()
+        resetSearch()
+        focusSearchField()
     }
     
     func viewWasActivated() {
-        resetWindows()
-        searchFieldContainer.becomeFirstResponder()
+        setIncomingWindow()
+        resetSearch()
+        focusSearchField()
     }
-    
+
+    func focusSearchField() {
+        searchField.becomeFirstResponder()
+    }
+
+    func setIncomingWindow() {
+        if let windowsBelowSelf = AccessibilityWrapper.windowsBelowCurrent() {
+            incomingWindow = windowsBelowSelf[0]
+        }
+    }
+
     func resetWindows() {
         if var _windows = AccessibilityWrapper.windowsInCurrentSpace() {
             if _windows.count > 1 {
@@ -61,13 +70,46 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
     
+    func resetSearch() {
+        resetWindows()
+        searchField.stringValue = ""
+    }
+
+    // Resize the view to match the number of results.
+    func resizeToFitContent() {
+        let contentHeight = scrollView.documentView!.frame.size.height
+        let searchBoxHeight = searchField.frame.size.height
+        let prevScrollHeight = scrollView.frame.size.height
+        let prevScrollY = scrollView.frame.origin.y
+        println("beep")
+        println("view height \(view.frame.size.height)")
+        println("scrollview height \(scrollView.frame.size.height)")
+        println("scrollview y \(scrollView.frame.origin.y)")
+        println("tableview height \(tableView.frame.size.height)")
+        // This isn't working. :(
+//        view.frame.size.height = contentHeight + searchBoxHeight
+//        scrollView.frame.size.height = contentHeight
+//        if (prevScrollHeight > contentHeight) {
+//            scrollView.frame.origin.y = prevScrollY - (prevScrollHeight - contentHeight)
+//        }
+//        else if (prevScrollHeight < contentHeight) {
+//            scrollView.frame.origin.y = prevScrollY + (contentHeight - prevScrollHeight)
+//        }
+        println("view height \(view.frame.size.height)")
+        println("scrollview height \(scrollView.frame.size.height)")
+        println("scrollview y \(scrollView.frame.origin.y)")
+        println("tableview height \(tableView.frame.size.height)")
+    }
+
     func doSearch(text: String) {
+        resetWindows()
         let lowerText = text.lowercaseString
         windows = windows.filter { (window) in
             return window.name.lowercaseString.rangeOfString(lowerText) != nil ||
                 window.owner.lowercaseString.rangeOfString(lowerText) != nil
         }
         tableView.reloadData()
+        resizeToFitContent()
     }
     
     func doOpenItem(index: Int = 0) {
@@ -136,19 +178,23 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     // Close the window.
-    func doCancel() {
+    func doCancel(openLastWindow: Bool = false) {
         let app = NSApplication.sharedApplication()
         if let window = app.mainWindow {
             window.orderOut(self)
         }
+        if openLastWindow {
+            if let lastOpenWindow = incomingWindow {
+                AccessibilityWrapper.openWindow(forApplicationWithPid: lastOpenWindow.pid, named: lastOpenWindow.name)
+            }
+        }
     }
     
-    @IBAction func cancel(sender: NSSearchFieldCell) {
-        doCancel()
+    @IBAction func cancel(sender: TextSwitcherView) {
+        doCancel(openLastWindow: true)
     }
     
-    @IBAction func search(sender: NSSearchFieldCell) {
-        resetWindows()
+    @IBAction func search(sender: TextSwitcherView) {
         if sender.stringValue.isEmpty {
             return
         }

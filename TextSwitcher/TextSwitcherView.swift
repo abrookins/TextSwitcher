@@ -10,9 +10,10 @@ import AppKit
 import Carbon
 
 
-class TextSwitcherView: NSSearchField {
+class TextSwitcherView: NSTextField {
 
     let chooseSearchResultAction = "chooseSearchResult:"
+    let searchAction = "search:"
     let cancelAction = "cancel"
     var chosenResult: String = ""
 
@@ -21,6 +22,7 @@ class TextSwitcherView: NSSearchField {
         let isEscapeKey = theEvent.keyCode == UInt16(kVK_Escape)
         let cancel = Selector(cancelAction)
         let chooseResult = Selector(chooseSearchResultAction)
+        let search = Selector(searchAction)
         chosenResult = ""
         
         if isEscapeKey {
@@ -35,7 +37,10 @@ class TextSwitcherView: NSSearchField {
         else if isReturnKey {
             sendAction(chooseResult, to: target)
         }
-        
+        else {
+            sendAction(search, to: target)
+        }
+
         super.keyUp(theEvent)
     }
     
