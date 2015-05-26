@@ -9,7 +9,7 @@
 import Foundation
 
 
-class WindowData {
+class WindowData: Equatable, Printable {
     var owner: String = ""
     var name: String = ""
     var pid: Int = 0
@@ -19,6 +19,16 @@ class WindowData {
         self.name = name
         self.pid = pid
     }
+
+    var description: String {
+        return "WindowData(owner=\(owner), name=\(name), pid=\(pid)"
+    }
+}
+
+
+// Fulfill the Equatable protocol for WindowData.
+func ==(lhs: WindowData, rhs: WindowData) -> Bool {
+    return lhs.owner == rhs.owner && lhs.name == rhs.name && lhs.pid == rhs.pid
 }
 
 

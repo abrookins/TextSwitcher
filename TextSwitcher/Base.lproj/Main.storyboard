@@ -669,11 +669,19 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TextSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" identifier=" " wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="288"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-bX-WeP" customClass="TextSwitcherView" customModule="TextSwitcher" customModuleProvider="target">
+                                <rect key="frame" x="-4" y="310" width="1004" height="42"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" drawsBackground="YES" id="LX1-6Y-JLF">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="shadowColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXr-8d-SXc">
-                                <rect key="frame" x="-2" y="-1" width="1002" height="250"/>
+                                <rect key="frame" x="-2" y="-1" width="1002" height="312"/>
                                 <clipView key="contentView" misplaced="YES" id="aAc-Ko-t25">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -795,14 +803,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-bX-WeP" customClass="TextSwitcherView" customModule="TextSwitcher" customModuleProvider="target">
-                                <rect key="frame" x="-4" y="248" width="1004" height="42"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LX1-6Y-JLF">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="shadowColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -815,7 +815,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-163" y="810"/>
+            <point key="canvasLocation" x="-163" y="841"/>
         </scene>
     </scenes>
     <resources>

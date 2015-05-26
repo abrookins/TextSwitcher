@@ -9,11 +9,15 @@ This app is essentially a text-based Command+Tab that works how I wish that comm
 allows the user to filter a list of open windows by partial text-matching against the window
 title or application name.
 
+* Pressing Option-Tab activates TextSwitcher from anywhere in the system (a global hot-key).
+
+* Typing text in the open TextSwitcher window filters the list of windows by application name or window title.
+
 * Pressing Command and the number key displayed next to an item in the list brings that window to the foreground.
 
 * Pressing Enter brings the top-most window in the list to the foreground.
 
-* Pressing Escape clears the current search or hides the app if there is no current search.
+* Pressing Escape hides the app and returns you to the last window you were on.
 
 ## Architecture
 
@@ -82,9 +86,32 @@ low-level Accessibility API functions.
 
 ## Current problems
 * No tests
-* If instead of choosing a window, you hit Escape to close TextSwitcher, the window you were on before is not refocused
-* Pressing the keyboard shortcut to launch the app while it is already on screen should return you to the window you were on when you opened the app
-* After searching for text, then opening a matching application, then returning to TS, the search text is still in the search box
-* The window should grow and shrink to match the size of the TableView
+* The window should grow and shrink to match the size of the TableView. Some ideas:
+`   // Resize the view to match the number of results.
+    func resizeToFitContent() {
+        let contentHeight = scrollView.documentView!.frame.size.height
+        let searchBoxHeight = searchField.frame.size.height
+        let prevScrollHeight = scrollView.frame.size.height
+        let prevScrollY = scrollView.frame.origin.y
+        println("beep")
+        println("view height \(view.frame.size.height)")
+        println("scrollview height \(scrollView.frame.size.height)")
+        println("scrollview y \(scrollView.frame.origin.y)")
+        println("tableview height \(tableView.frame.size.height)")
+        // This isn't working. :(
+//        view.frame.size.height = contentHeight + searchBoxHeight
+//        scrollView.frame.size.height = contentHeight
+//        if (prevScrollHeight > contentHeight) {
+//            scrollView.frame.origin.y = prevScrollY - (prevScrollHeight - contentHeight)
+//        }
+//        else if (prevScrollHeight < contentHeight) {
+//            scrollView.frame.origin.y = prevScrollY + (contentHeight - prevScrollHeight)
+//        }
+        println("view height \(view.frame.size.height)")
+        println("scrollview height \(scrollView.frame.size.height)")
+        println("scrollview y \(scrollView.frame.origin.y)")
+        println("tableview height \(tableView.frame.size.height)")
+    }
+`
 * Runs as a menu bar app, but you can't quit it or view preferences
 * Ideally it would show separate lists of applications, one for each open space, not just the current one

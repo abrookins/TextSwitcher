@@ -18,6 +18,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
     var windows: [WindowData] = []
     var incomingWindow: WindowData? = nil
+    var outgoingWindow: WindowData? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +59,12 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
     func resetWindows() {
         if var _windows = AccessibilityWrapper.windowsInCurrentSpace() {
-            if _windows.count > 1 {
-                // Swap the first and second items, like Command-Tab does.
-                let firstItem = _windows.removeAtIndex(0)
-                let secondItem = _windows.removeAtIndex(0)
-                _windows.insert(secondItem, atIndex: 0)
-                _windows.insert(firstItem, atIndex: 1)
+            // Make the last window the user was in the first item in the list.
+            if let _outgoingWindow = outgoingWindow, indexOfOutgoingWindow = find(_windows, _outgoingWindow) {
+                let outgoingWindowItem = _windows.removeAtIndex(indexOfOutgoingWindow)
+                let currentWindow = _windows.removeAtIndex(0)
+                _windows.insert(outgoingWindowItem, atIndex: 0)
+                _windows.insert(currentWindow, atIndex: 1)
             }
             windows = _windows
             tableView.reloadData()
@@ -75,32 +76,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         searchField.stringValue = ""
     }
 
-    // Resize the view to match the number of results.
-    func resizeToFitContent() {
-        let contentHeight = scrollView.documentView!.frame.size.height
-        let searchBoxHeight = searchField.frame.size.height
-        let prevScrollHeight = scrollView.frame.size.height
-        let prevScrollY = scrollView.frame.origin.y
-        println("beep")
-        println("view height \(view.frame.size.height)")
-        println("scrollview height \(scrollView.frame.size.height)")
-        println("scrollview y \(scrollView.frame.origin.y)")
-        println("tableview height \(tableView.frame.size.height)")
-        // This isn't working. :(
-//        view.frame.size.height = contentHeight + searchBoxHeight
-//        scrollView.frame.size.height = contentHeight
-//        if (prevScrollHeight > contentHeight) {
-//            scrollView.frame.origin.y = prevScrollY - (prevScrollHeight - contentHeight)
-//        }
-//        else if (prevScrollHeight < contentHeight) {
-//            scrollView.frame.origin.y = prevScrollY + (contentHeight - prevScrollHeight)
-//        }
-        println("view height \(view.frame.size.height)")
-        println("scrollview height \(scrollView.frame.size.height)")
-        println("scrollview y \(scrollView.frame.origin.y)")
-        println("tableview height \(tableView.frame.size.height)")
-    }
-
     func doSearch(text: String) {
         resetWindows()
         let lowerText = text.lowercaseString
@@ -109,13 +84,15 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
                 window.owner.lowercaseString.rangeOfString(lowerText) != nil
         }
         tableView.reloadData()
-        resizeToFitContent()
     }
     
     func doOpenItem(index: Int = 0) {
         let count = windows.count
         let indexExists = index <= count - 1
         if count > 0 && indexExists  {
+            if let _incomingWindow = incomingWindow {
+                outgoingWindow = _incomingWindow
+            }
             let window = windows[index]
             doCancel()
             AccessibilityWrapper.openWindow(forApplicationWithPid: window.pid, named: window.name)
