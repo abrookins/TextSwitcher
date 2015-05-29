@@ -78,10 +78,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
     func doSearch(text: String) {
         resetWindows()
-        let lowerText = text.lowercaseString
-        windows = windows.filter { (window) in
-            return window.name.lowercaseString.rangeOfString(lowerText) != nil ||
-                window.owner.lowercaseString.rangeOfString(lowerText) != nil
+        let cleanText = text.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+
+        if !cleanText.isEmpty {
+            windows = windows.filter { (window) in
+                return window.name.lowercaseString.rangeOfString(cleanText) != nil ||
+                    window.owner.lowercaseString.rangeOfString(cleanText) != nil
+            }
         }
         tableView.reloadData()
     }
@@ -172,9 +175,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBAction func search(sender: TextSwitcherView) {
-        if sender.stringValue.isEmpty {
-            return
-        }
         doSearch(sender.stringValue)
     }
     
