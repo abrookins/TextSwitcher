@@ -447,6 +447,8 @@
 				INFOPLIST_FILE = TextSwitcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
@@ -461,6 +463,8 @@
 				INFOPLIST_FILE = TextSwitcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
