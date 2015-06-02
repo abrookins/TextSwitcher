@@ -45,6 +45,7 @@ class AccessibilityWrapper {
             let windowNameKey = kCGWindowName as String
             let pidKey = kCGWindowOwnerPID as String
             let layerKey = kCGWindowLayer as String
+            let alphaKey = kCGWindowAlpha as String
             
             // Ignore menubar and system applications.
             if let layer = window[layerKey] as? Int {
@@ -55,34 +56,42 @@ class AccessibilityWrapper {
             
             if let owner = window[ownerNameKey] as? String,
                     name = window[windowNameKey] as? String,
+                    alpha = window[alphaKey] as? Int,
                     pid = window[pidKey] as? Int {
                     
                 // Windows named "TextSwitcher" are this app.
                 // Windows named "Menubar" are not windows.
                 let ignoredApps = Set(["Menubar", "TextSwitcher", "SystemUIServer"])
 
-                // Windows we will show even though they don't have a name (???)
-                let includedApps = Set(["Messages"])
-                    
-                if includedApps.contains(owner) || !ignoredApps.contains(name) && !ignoredApps.contains(owner) {
+                let isInvisible = alpha == 0
+
+                if !isInvisible && !ignoredApps.contains(name) && !ignoredApps.contains(owner) {
                     data.append(WindowData(owner: owner, name: name, pid: Int(pid)))
                 }
             }
         }
+
         return data
     }
 
     // Get data about windows in the current space.
     class func windowsInCurrentSpace() -> [WindowData]? {
+        var windowDicts: [WindowData]? = nil
+
         // get an array of all the windows in the current Space
         // Note: CGWindowID(0) == kCGNullWindowID
-        let windowInfosRef = CGWindowListCopyWindowInfo(CGWindowListOption(
-            kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements), CGWindowID(0))
+        let windowInfosRef = CGWindowListCopyWindowInfo(
+            CGWindowListOption(kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements),
+            CGWindowID(0)
+        )
+
         let windowInfos = windowInfosRef.takeRetainedValue() as [AnyObject]
+
         if let windowsDowncasted = windowInfos as? [NSDictionary] {
-            return buildWindowDicts(windowsDowncasted)
+            windowDicts = buildWindowDicts(windowsDowncasted)
         }
-        return nil
+
+        return windowDicts
     }
 
     class func windowsBelowCurrent() -> [WindowData]? {

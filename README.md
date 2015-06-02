@@ -87,31 +87,30 @@ low-level Accessibility API functions.
 ## Current problems
 * No tests
 * The window should grow and shrink to match the size of the TableView. Some ideas:
-`   // Resize the view to match the number of results.
-    func resizeToFitContent() {
-        let contentHeight = scrollView.documentView!.frame.size.height
-        let searchBoxHeight = searchField.frame.size.height
-        let prevScrollHeight = scrollView.frame.size.height
-        let prevScrollY = scrollView.frame.origin.y
-        println("beep")
-        println("view height \(view.frame.size.height)")
-        println("scrollview height \(scrollView.frame.size.height)")
-        println("scrollview y \(scrollView.frame.origin.y)")
-        println("tableview height \(tableView.frame.size.height)")
-        // This isn't working. :(
-//        view.frame.size.height = contentHeight + searchBoxHeight
-//        scrollView.frame.size.height = contentHeight
-//        if (prevScrollHeight > contentHeight) {
-//            scrollView.frame.origin.y = prevScrollY - (prevScrollHeight - contentHeight)
-//        }
-//        else if (prevScrollHeight < contentHeight) {
-//            scrollView.frame.origin.y = prevScrollY + (contentHeight - prevScrollHeight)
-//        }
-        println("view height \(view.frame.size.height)")
-        println("scrollview height \(scrollView.frame.size.height)")
-        println("scrollview y \(scrollView.frame.origin.y)")
-        println("tableview height \(tableView.frame.size.height)")
-    }
-`
+        // Resize the view to match the number of results.
+        func resizeToFitContent() {
+            let contentHeight = scrollView.documentView!.frame.size.height
+            let searchBoxHeight = searchField.frame.size.height
+            let prevScrollHeight = scrollView.frame.size.height
+            let prevScrollY = scrollView.frame.origin.y
+            println("beep")
+            println("view height \(view.frame.size.height)")
+            println("scrollview height \(scrollView.frame.size.height)")
+            println("scrollview y \(scrollView.frame.origin.y)")
+            println("tableview height \(tableView.frame.size.height)")
+            // This isn't working. :(
+    //        view.frame.size.height = contentHeight + searchBoxHeight
+    //        scrollView.frame.size.height = contentHeight
+    //        if (prevScrollHeight > contentHeight) {
+    //            scrollView.frame.origin.y = prevScrollY - (prevScrollHeight - contentHeight)
+    //        }
+    //        else if (prevScrollHeight < contentHeight) {
+    //            scrollView.frame.origin.y = prevScrollY + (contentHeight - prevScrollHeight)
+    //        }
+            println("view height \(view.frame.size.height)")
+            println("scrollview height \(scrollView.frame.size.height)")
+            println("scrollview y \(scrollView.frame.origin.y)")
+            println("tableview height \(tableView.frame.size.height)")
+        }
 * Runs as a menu bar app, but you can't quit it or view preferences
 * Ideally it would show separate lists of applications, one for each open space, not just the current one

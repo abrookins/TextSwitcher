@@ -124,9 +124,18 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         let cellIdentifier = "owner"
         if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
             let window = windows[row]
-            let valueBeforeCommandHint = window.owner
+            cellView.textField!.stringValue = window.owner
+            return cellView
+        }
+        return nil
+    }
+
+    func makeShortcutTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cellIdentifier = "shortcut"
+        if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
+            let window = windows[row]
             // Give the user a one-indexed value for hitting Control+<Index> to open the window
-            cellView.textField!.stringValue = "⌘\(row + 1) | \(valueBeforeCommandHint)"
+            cellView.textField!.stringValue = "⌘\(row + 1)"
             return cellView
         }
         return nil
@@ -143,18 +152,19 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        var cell: NSView?
+
         if let columnIdentifier = tableColumn?.identifier {
-            if columnIdentifier == "ownerColumn" {
-                return makeOwnerTableCell(tableView, viewForTableColumn: tableColumn, row: row)
-            }
-            else if columnIdentifier == "nameColumn" {
-                return makeNameTableCell(tableView, viewForTableColumn: tableColumn, row: row)
-            }
-            else if columnIdentifier == "imageColumn" {
-                return makeIconTableCell(tableView, viewForTableColumn: tableColumn, row: row)
+            switch columnIdentifier {
+            case "imageColumn": cell = makeIconTableCell(tableView, viewForTableColumn: tableColumn, row: row)
+            case "shortcutColumn": cell = makeShortcutTableCell(tableView, viewForTableColumn: tableColumn, row: row)
+            case "ownerColumn": cell = makeOwnerTableCell(tableView, viewForTableColumn: tableColumn, row: row)
+            case "nameColumn": cell = makeNameTableCell(tableView, viewForTableColumn: tableColumn, row: row)
+            default: cell = nil
             }
         }
-        return nil
+
+        return cell
     }
     
     // Close the window.
