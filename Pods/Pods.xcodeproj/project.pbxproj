@@ -1,0 +1,632 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10162F002559D4E025CEB01B96C4EDB0 /* MASShortcutBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = A436BB748682657D4E08E10101C37A1C /* MASShortcutBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E52D86A4F8D4B762FF38AD90D1F7CEC /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D46091C62608F46C0E051A6072E98F /* AppKit.framework */; };
+		2854A07A193819ECD5642D92F672D685 /* Pods-TextSwitcherTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C701FAB53354C9E7925818CA2F3454 /* Pods-TextSwitcherTests-dummy.m */; };
+		2F0EDFFC2B863859633CBDCB56036B84 /* MASShortcutValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 458E6E9E33AFE8BF1218E4A9397066C3 /* MASShortcutValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D93D7EAB28FB5190394ED5091D7FB72 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D442238A0F5E753E224941E65D8A62C /* MASShortcutMonitor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3E28142B9D74533D88AB86A0C62C33E6 /* MASShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C0B8A465D46F4B0F1CA41210754A5E4 /* MASShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FAE2D7E3A0CB3431DCC5170B8CF3E2A /* MASShortcut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E392144B4C6E50C8A815D6D0EE62635 /* MASShortcut-dummy.m */; };
+		4477B827ED971B517C09154181F814AF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABA69F0221C659DB9B227618EF7F342 /* Cocoa.framework */; };
+		54845A1E79F1EBF7EE00D14A41B1EE9D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BBAA9881FF63C61C04546866D9D60A /* Carbon.framework */; };
+		637635A3503D3339CCB16B1D59838F7C /* MASDictionaryTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A44AD38694D4B5EAF917F5F5AEC96A4A /* MASDictionaryTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DE16CE74AB5E02F45237B99D706C703 /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 604C58FF430C81D29D2C09B7C601090F /* MASKeyCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B37A05BB39570005E96A06C1FA78F0F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABA69F0221C659DB9B227618EF7F342 /* Cocoa.framework */; };
+		7BA0B07C773E0CDC385DA8DB63C4EBB0 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F7EA4275F5C6EB7F0A8E5A8244BD9 /* MASHotKey.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9760229BAA8AC5B99044C91FA4B419D5 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = ED876BBDD592236737BE3C057CB78126 /* MASShortcutView+Bindings.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		98B4F07266D6F4D9F6D48D1B5304A690 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = E76184963BC7E374C03A9F61749FC210 /* MASHotKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B37B8A645723E05EC534714BF9838CD5 /* MASShortcutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 368C896797ED6D0610ACB3DF7195E3C9 /* MASShortcutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB344C614F157349129261A0ABC81316 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AF1888CD31C6CD8DD1F17AFC9EF0FB /* MASShortcutBinder.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BDEC06CB7396FC9727DFFC70F3DD93B3 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = B977DEFEF7B4542394BFB7ECD3500C23 /* MASShortcut.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BEB35BAC226E1CCFA460028AE82F3C3A /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799DD3E35F5D9956EA66576465B2D051 /* MASShortcutView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BF1F6F1B3FFB4BB872655D6B58D46780 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E694AB09DE3B0EA1162C3B391A041B7 /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C318D7325A0B77A9AA36412EDC6A2011 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 703A986036C4B6E2B088E92B66CF7F96 /* MASShortcutValidator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C47821CE8E9D257DB07DC60AD2279245 /* Pods-TextSwitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23757D167F569FF4C99F3C51A6563A9A /* Pods-TextSwitcher-dummy.m */; };
+		CDA782E50C38F2489AAE84E8A403505F /* MASShortcutView+Bindings.h in Headers */ = {isa = PBXBuildFile; fileRef = 43DF8AE02E0FF16AAB333DD886E5065B /* MASShortcutView+Bindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDDCDB80B94B1FCEF37537C7DE2953D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABA69F0221C659DB9B227618EF7F342 /* Cocoa.framework */; };
+		F70F6537DE1158559A8E82463FA9B6E0 /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5ED0306B4B395CE8445D98A65E8D79 /* MASDictionaryTransformer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FB60261D466B7E25E78A16251DF945D0 /* MASShortcutMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = EB72B887B0EDE968D1EE87DA4DE9AD23 /* MASShortcutMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C7A9A7086D24838B11EACC4508B93BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01EF3162F4AA5017C0C6B1BDAFCAE55A;
+			remoteInfo = MASShortcut;
+		};
+		F6469C2CBF6FDB29075BBDFA68B97B78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01EF3162F4AA5017C0C6B1BDAFCAE55A;
+			remoteInfo = MASShortcut;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		11CD5EBEDB024743E8FCEF86990D0197 /* Pods-TextSwitcherTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TextSwitcherTests-frameworks.sh"; sourceTree = "<group>"; };
+		131B94F5FC789AF88DE6108AD0A8627E /* libMASShortcut.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMASShortcut.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		16C158228060C14C300C1542B9365609 /* Pods-TextSwitcher-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TextSwitcher-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1B5ED0306B4B395CE8445D98A65E8D79 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = Framework/MASDictionaryTransformer.m; sourceTree = "<group>"; };
+		220C4E0262B3D58B25C9C4241EC0D483 /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
+		23757D167F569FF4C99F3C51A6563A9A /* Pods-TextSwitcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TextSwitcher-dummy.m"; sourceTree = "<group>"; };
+		368C896797ED6D0610ACB3DF7195E3C9 /* MASShortcutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/MASShortcutView.h; sourceTree = "<group>"; };
+		38D46091C62608F46C0E051A6072E98F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		3E392144B4C6E50C8A815D6D0EE62635 /* MASShortcut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut-dummy.m"; sourceTree = "<group>"; };
+		3E694AB09DE3B0EA1162C3B391A041B7 /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
+		4149F3B0FF6E172EFAED57E511F21922 /* MASShortcut.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.xcconfig; sourceTree = "<group>"; };
+		43DF8AE02E0FF16AAB333DD886E5065B /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
+		458E6E9E33AFE8BF1218E4A9397066C3 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
+		4C0B8A465D46F4B0F1CA41210754A5E4 /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/MASShortcut.h; sourceTree = "<group>"; };
+		4C9519B0822F86FD82B7F6D597A3B0D4 /* Pods-TextSwitcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TextSwitcher.release.xcconfig"; sourceTree = "<group>"; };
+		604C58FF430C81D29D2C09B7C601090F /* MASKeyCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
+		6D442238A0F5E753E224941E65D8A62C /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/MASShortcutMonitor.m; sourceTree = "<group>"; };
+		703A986036C4B6E2B088E92B66CF7F96 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/MASShortcutValidator.m; sourceTree = "<group>"; };
+		799DD3E35F5D9956EA66576465B2D051 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/MASShortcutView.m; sourceTree = "<group>"; };
+		81F5F8B69A7B383F57F16F58DB6A8D47 /* Pods-TextSwitcher-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TextSwitcher-acknowledgements.plist"; sourceTree = "<group>"; };
+		8ABB0027530831C390656E557F1A5EEC /* Pods-TextSwitcherTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TextSwitcherTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		8FABD742947569637888C5BB397604C8 /* libPods-TextSwitcherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TextSwitcherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C9E8B89E8B4F4D92ABF5C89DB41D1E /* Pods-TextSwitcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TextSwitcherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		91B6FC353A5CBDD31DB13F421A2CFB16 /* Pods-TextSwitcher-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TextSwitcher-resources.sh"; sourceTree = "<group>"; };
+		9BA771EFAA946C417E8323476068C267 /* Pods-TextSwitcherTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TextSwitcherTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A436BB748682657D4E08E10101C37A1C /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = Framework/MASShortcutBinder.h; sourceTree = "<group>"; };
+		A44AD38694D4B5EAF917F5F5AEC96A4A /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = Framework/MASDictionaryTransformer.h; sourceTree = "<group>"; };
+		A7BBAA9881FF63C61C04546866D9D60A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
+		AABA69F0221C659DB9B227618EF7F342 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		AF0AB071CC832A60C4AD39C140B7F468 /* libPods-TextSwitcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TextSwitcher.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6BDC1E264741A93D7D21A3E9B8AF086 /* Pods-TextSwitcherTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TextSwitcherTests-resources.sh"; sourceTree = "<group>"; };
+		B977DEFEF7B4542394BFB7ECD3500C23 /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/MASShortcut.m; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C18DA81DB1139971B44BDA40BD0E933F /* Pods-TextSwitcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TextSwitcher.debug.xcconfig"; sourceTree = "<group>"; };
+		C48FC9436C2DD12A763C2C7BDBE8EA7D /* Pods-TextSwitcher-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TextSwitcher-frameworks.sh"; sourceTree = "<group>"; };
+		C7C701FAB53354C9E7925818CA2F3454 /* Pods-TextSwitcherTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TextSwitcherTests-dummy.m"; sourceTree = "<group>"; };
+		D9AF1888CD31C6CD8DD1F17AFC9EF0FB /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = Framework/MASShortcutBinder.m; sourceTree = "<group>"; };
+		DE5F7EA4275F5C6EB7F0A8E5A8244BD9 /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
+		E76184963BC7E374C03A9F61749FC210 /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/MASHotKey.h; sourceTree = "<group>"; };
+		EB72B887B0EDE968D1EE87DA4DE9AD23 /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/MASShortcutMonitor.h; sourceTree = "<group>"; };
+		ED876BBDD592236737BE3C057CB78126 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
+		FF3DD66CFD8FDBD11345091FF5ADC95D /* Pods-TextSwitcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TextSwitcherTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A0E51FFD5F4BE7D65396A2A959835A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E52D86A4F8D4B762FF38AD90D1F7CEC /* AppKit.framework in Frameworks */,
+				54845A1E79F1EBF7EE00D14A41B1EE9D /* Carbon.framework in Frameworks */,
+				EDDCDB80B94B1FCEF37537C7DE2953D2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62B090F9BFBC0655D1A3C2C6CB24C6F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4477B827ED971B517C09154181F814AF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3D458448F234F53669FDC8BE8BFAC57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B37A05BB39570005E96A06C1FA78F0F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AD840BE35E0F663C34A674B55300A5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				131B94F5FC789AF88DE6108AD0A8627E /* libMASShortcut.a */,
+				AF0AB071CC832A60C4AD39C140B7F468 /* libPods-TextSwitcher.a */,
+				8FABD742947569637888C5BB397604C8 /* libPods-TextSwitcherTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4167A4C29ACA483FAA15D7E5C1B34519 /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				A44AD38694D4B5EAF917F5F5AEC96A4A /* MASDictionaryTransformer.h */,
+				1B5ED0306B4B395CE8445D98A65E8D79 /* MASDictionaryTransformer.m */,
+				E76184963BC7E374C03A9F61749FC210 /* MASHotKey.h */,
+				DE5F7EA4275F5C6EB7F0A8E5A8244BD9 /* MASHotKey.m */,
+				604C58FF430C81D29D2C09B7C601090F /* MASKeyCodes.h */,
+				4C0B8A465D46F4B0F1CA41210754A5E4 /* MASShortcut.h */,
+				B977DEFEF7B4542394BFB7ECD3500C23 /* MASShortcut.m */,
+				A436BB748682657D4E08E10101C37A1C /* MASShortcutBinder.h */,
+				D9AF1888CD31C6CD8DD1F17AFC9EF0FB /* MASShortcutBinder.m */,
+				EB72B887B0EDE968D1EE87DA4DE9AD23 /* MASShortcutMonitor.h */,
+				6D442238A0F5E753E224941E65D8A62C /* MASShortcutMonitor.m */,
+				458E6E9E33AFE8BF1218E4A9397066C3 /* MASShortcutValidator.h */,
+				703A986036C4B6E2B088E92B66CF7F96 /* MASShortcutValidator.m */,
+				368C896797ED6D0610ACB3DF7195E3C9 /* MASShortcutView.h */,
+				799DD3E35F5D9956EA66576465B2D051 /* MASShortcutView.m */,
+				43DF8AE02E0FF16AAB333DD886E5065B /* MASShortcutView+Bindings.h */,
+				ED876BBDD592236737BE3C057CB78126 /* MASShortcutView+Bindings.m */,
+				3E694AB09DE3B0EA1162C3B391A041B7 /* Shortcut.h */,
+				B0B5EF0B4D5C9C444BE026C6BC679AB7 /* Support Files */,
+			);
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
+		78F7FCC010263FCD454D6CAFD834CB21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4167A4C29ACA483FAA15D7E5C1B34519 /* MASShortcut */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				96D996393384F21972E2DD81788EE22C /* Frameworks */,
+				78F7FCC010263FCD454D6CAFD834CB21 /* Pods */,
+				1AD840BE35E0F663C34A674B55300A5E /* Products */,
+				E5A8F73E3A77416E3EAA77FBA34C4A38 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9488C2B1619AF2591438FB23C9F7F3E9 /* Pods-TextSwitcherTests */ = {
+			isa = PBXGroup;
+			children = (
+				9BA771EFAA946C417E8323476068C267 /* Pods-TextSwitcherTests-acknowledgements.markdown */,
+				8ABB0027530831C390656E557F1A5EEC /* Pods-TextSwitcherTests-acknowledgements.plist */,
+				C7C701FAB53354C9E7925818CA2F3454 /* Pods-TextSwitcherTests-dummy.m */,
+				11CD5EBEDB024743E8FCEF86990D0197 /* Pods-TextSwitcherTests-frameworks.sh */,
+				B6BDC1E264741A93D7D21A3E9B8AF086 /* Pods-TextSwitcherTests-resources.sh */,
+				90C9E8B89E8B4F4D92ABF5C89DB41D1E /* Pods-TextSwitcherTests.debug.xcconfig */,
+				FF3DD66CFD8FDBD11345091FF5ADC95D /* Pods-TextSwitcherTests.release.xcconfig */,
+			);
+			name = "Pods-TextSwitcherTests";
+			path = "Target Support Files/Pods-TextSwitcherTests";
+			sourceTree = "<group>";
+		};
+		96D996393384F21972E2DD81788EE22C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D2EDA8772A3856CB129EFE53C253563 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D2EDA8772A3856CB129EFE53C253563 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				38D46091C62608F46C0E051A6072E98F /* AppKit.framework */,
+				A7BBAA9881FF63C61C04546866D9D60A /* Carbon.framework */,
+				AABA69F0221C659DB9B227618EF7F342 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		9F7EF16532AA233EC4F5E40378E130A8 /* Pods-TextSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				16C158228060C14C300C1542B9365609 /* Pods-TextSwitcher-acknowledgements.markdown */,
+				81F5F8B69A7B383F57F16F58DB6A8D47 /* Pods-TextSwitcher-acknowledgements.plist */,
+				23757D167F569FF4C99F3C51A6563A9A /* Pods-TextSwitcher-dummy.m */,
+				C48FC9436C2DD12A763C2C7BDBE8EA7D /* Pods-TextSwitcher-frameworks.sh */,
+				91B6FC353A5CBDD31DB13F421A2CFB16 /* Pods-TextSwitcher-resources.sh */,
+				C18DA81DB1139971B44BDA40BD0E933F /* Pods-TextSwitcher.debug.xcconfig */,
+				4C9519B0822F86FD82B7F6D597A3B0D4 /* Pods-TextSwitcher.release.xcconfig */,
+			);
+			name = "Pods-TextSwitcher";
+			path = "Target Support Files/Pods-TextSwitcher";
+			sourceTree = "<group>";
+		};
+		B0B5EF0B4D5C9C444BE026C6BC679AB7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4149F3B0FF6E172EFAED57E511F21922 /* MASShortcut.xcconfig */,
+				3E392144B4C6E50C8A815D6D0EE62635 /* MASShortcut-dummy.m */,
+				220C4E0262B3D58B25C9C4241EC0D483 /* MASShortcut-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MASShortcut";
+			sourceTree = "<group>";
+		};
+		E5A8F73E3A77416E3EAA77FBA34C4A38 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F7EF16532AA233EC4F5E40378E130A8 /* Pods-TextSwitcher */,
+				9488C2B1619AF2591438FB23C9F7F3E9 /* Pods-TextSwitcherTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FDCAAD55BC164A881AA2EC4C71271DCE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				637635A3503D3339CCB16B1D59838F7C /* MASDictionaryTransformer.h in Headers */,
+				98B4F07266D6F4D9F6D48D1B5304A690 /* MASHotKey.h in Headers */,
+				6DE16CE74AB5E02F45237B99D706C703 /* MASKeyCodes.h in Headers */,
+				3E28142B9D74533D88AB86A0C62C33E6 /* MASShortcut.h in Headers */,
+				10162F002559D4E025CEB01B96C4EDB0 /* MASShortcutBinder.h in Headers */,
+				FB60261D466B7E25E78A16251DF945D0 /* MASShortcutMonitor.h in Headers */,
+				2F0EDFFC2B863859633CBDCB56036B84 /* MASShortcutValidator.h in Headers */,
+				CDA782E50C38F2489AAE84E8A403505F /* MASShortcutView+Bindings.h in Headers */,
+				B37B8A645723E05EC534714BF9838CD5 /* MASShortcutView.h in Headers */,
+				BF1F6F1B3FFB4BB872655D6B58D46780 /* Shortcut.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		01EF3162F4AA5017C0C6B1BDAFCAE55A /* MASShortcut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFD8927A57205DA11F6C9165A74EC47B /* Build configuration list for PBXNativeTarget "MASShortcut" */;
+			buildPhases = (
+				F6F99EAAB6559855C3F30E1B2E19C9AA /* Sources */,
+				3A0E51FFD5F4BE7D65396A2A959835A2 /* Frameworks */,
+				FDCAAD55BC164A881AA2EC4C71271DCE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MASShortcut;
+			productName = MASShortcut;
+			productReference = 131B94F5FC789AF88DE6108AD0A8627E /* libMASShortcut.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1192AFD8B3CE3EFB1CEA74A97C28BE61 /* Pods-TextSwitcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 088FAAB5FEF5D3043723E80CBE08CC69 /* Build configuration list for PBXNativeTarget "Pods-TextSwitcherTests" */;
+			buildPhases = (
+				5E52792FEF5B0F60E2241B9D31B718C0 /* Sources */,
+				F3D458448F234F53669FDC8BE8BFAC57 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2544EF48160E00BF557E54F199DDD6DE /* PBXTargetDependency */,
+			);
+			name = "Pods-TextSwitcherTests";
+			productName = "Pods-TextSwitcherTests";
+			productReference = 8FABD742947569637888C5BB397604C8 /* libPods-TextSwitcherTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		19D37A0E300306F2778B020449DA5F6B /* Pods-TextSwitcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23C734B99611024144BA673FA7117BFE /* Build configuration list for PBXNativeTarget "Pods-TextSwitcher" */;
+			buildPhases = (
+				7A0E0E51F261DAB2EDE5635941739A58 /* Sources */,
+				62B090F9BFBC0655D1A3C2C6CB24C6F9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E94DF78AF7A86C45E2907BAF62749BBA /* PBXTargetDependency */,
+			);
+			name = "Pods-TextSwitcher";
+			productName = "Pods-TextSwitcher";
+			productReference = AF0AB071CC832A60C4AD39C140B7F468 /* libPods-TextSwitcher.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1AD840BE35E0F663C34A674B55300A5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01EF3162F4AA5017C0C6B1BDAFCAE55A /* MASShortcut */,
+				19D37A0E300306F2778B020449DA5F6B /* Pods-TextSwitcher */,
+				1192AFD8B3CE3EFB1CEA74A97C28BE61 /* Pods-TextSwitcherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E52792FEF5B0F60E2241B9D31B718C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2854A07A193819ECD5642D92F672D685 /* Pods-TextSwitcherTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0E0E51F261DAB2EDE5635941739A58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C47821CE8E9D257DB07DC60AD2279245 /* Pods-TextSwitcher-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6F99EAAB6559855C3F30E1B2E19C9AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F70F6537DE1158559A8E82463FA9B6E0 /* MASDictionaryTransformer.m in Sources */,
+				7BA0B07C773E0CDC385DA8DB63C4EBB0 /* MASHotKey.m in Sources */,
+				3FAE2D7E3A0CB3431DCC5170B8CF3E2A /* MASShortcut-dummy.m in Sources */,
+				BDEC06CB7396FC9727DFFC70F3DD93B3 /* MASShortcut.m in Sources */,
+				BB344C614F157349129261A0ABC81316 /* MASShortcutBinder.m in Sources */,
+				3D93D7EAB28FB5190394ED5091D7FB72 /* MASShortcutMonitor.m in Sources */,
+				C318D7325A0B77A9AA36412EDC6A2011 /* MASShortcutValidator.m in Sources */,
+				9760229BAA8AC5B99044C91FA4B419D5 /* MASShortcutView+Bindings.m in Sources */,
+				BEB35BAC226E1CCFA460028AE82F3C3A /* MASShortcutView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2544EF48160E00BF557E54F199DDD6DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MASShortcut;
+			target = 01EF3162F4AA5017C0C6B1BDAFCAE55A /* MASShortcut */;
+			targetProxy = 0C7A9A7086D24838B11EACC4508B93BE /* PBXContainerItemProxy */;
+		};
+		E94DF78AF7A86C45E2907BAF62749BBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MASShortcut;
+			target = 01EF3162F4AA5017C0C6B1BDAFCAE55A /* MASShortcut */;
+			targetProxy = F6469C2CBF6FDB29075BBDFA68B97B78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E621D6BF749EDCE77ACBE7C6D464E29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		38AE87DACB285B349F048A05D5A4F5C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C18DA81DB1139971B44BDA40BD0E933F /* Pods-TextSwitcher.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5535BADDDBAA83F0DC899BB9168A2099 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C9519B0822F86FD82B7F6D597A3B0D4 /* Pods-TextSwitcher.release.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5577A3F22A37686E40DB6863D68D476C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		59B4D3276B1F21E167519DD3ED2B7D35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4149F3B0FF6E172EFAED57E511F21922 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8A10883D585460668B61F14F5A95DB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4149F3B0FF6E172EFAED57E511F21922 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A36A110620DE9807D67DA9917799861B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF3DD66CFD8FDBD11345091FF5ADC95D /* Pods-TextSwitcherTests.release.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B74C7CFBA677C3D9243C474FCAC12916 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C9E8B89E8B4F4D92ABF5C89DB41D1E /* Pods-TextSwitcherTests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		088FAAB5FEF5D3043723E80CBE08CC69 /* Build configuration list for PBXNativeTarget "Pods-TextSwitcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B74C7CFBA677C3D9243C474FCAC12916 /* Debug */,
+				A36A110620DE9807D67DA9917799861B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23C734B99611024144BA673FA7117BFE /* Build configuration list for PBXNativeTarget "Pods-TextSwitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38AE87DACB285B349F048A05D5A4F5C0 /* Debug */,
+				5535BADDDBAA83F0DC899BB9168A2099 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E621D6BF749EDCE77ACBE7C6D464E29 /* Debug */,
+				5577A3F22A37686E40DB6863D68D476C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFD8927A57205DA11F6C9165A74EC47B /* Build configuration list for PBXNativeTarget "MASShortcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A10883D585460668B61F14F5A95DB5B /* Debug */,
+				59B4D3276B1F21E167519DD3ED2B7D35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
