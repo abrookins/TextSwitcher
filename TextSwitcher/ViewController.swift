@@ -60,7 +60,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     func resetWindows() {
         if var _windows = AccessibilityWrapper.windowsInCurrentSpace() {
             // Make the last window the user was in the first item in the list.
-            if let _outgoingWindow = outgoingWindow, indexOfOutgoingWindow = find(_windows, _outgoingWindow) {
+            if let _outgoingWindow = outgoingWindow, let indexOfOutgoingWindow = _windows.indexOf(_outgoingWindow) {
                 let outgoingWindowItem = _windows.removeAtIndex(indexOfOutgoingWindow)
                 let currentWindow = _windows.removeAtIndex(0)
                 _windows.insert(outgoingWindowItem, atIndex: 0)
@@ -133,7 +133,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     func makeShortcutTableCell(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellIdentifier = "shortcut"
         if let cellView = tableView.makeViewWithIdentifier(cellIdentifier, owner: self) as? NSTableCellView {
-            let window = windows[row]
             // Give the user a one-indexed value for hitting Control+<Index> to open the window
             cellView.textField!.stringValue = "⌘\(row + 1)"
             return cellView
@@ -181,7 +180,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBAction func cancel(sender: TextSwitcherView) {
-        doCancel(openLastWindow: true)
+        doCancel(true)
     }
     
     @IBAction func search(sender: TextSwitcherView) {
@@ -189,7 +188,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBAction func chooseSearchResult(sender: TextSwitcherView) {
-        var index = sender.chosenResult
+        let index = sender.chosenResult
         // We assume that they pressed the enter key, so just open
         // the top item in the search results.
         if index.isEmpty {
@@ -198,10 +197,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
         // Negate one because the display indexes are 1-based
         // while the actual array index is zero-based.
-        if let onIndexed = index.toInt() {
-            let oneIndexed = index.toInt()!
+        if let oneIndexed = Int(index) {
             let zeroIndexed = oneIndexed < 1 ? 0 : oneIndexed - 1
-            doOpenItem(index: zeroIndexed)
+            doOpenItem(zeroIndexed)
         }
     }
 }

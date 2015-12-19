@@ -164,6 +164,7 @@
 				EFBEA14A1AEAA2EA0089297C /* Frameworks */,
 				EFBEA14B1AEAA2EA0089297C /* Resources */,
 				B996F4727E342B86D030D840 /* Copy Pods Resources */,
+				F1F8FD44D668F7E1E1145114 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +184,7 @@
 				EFBEA15C1AEAA2EA0089297C /* Frameworks */,
 				EFBEA15D1AEAA2EA0089297C /* Resources */,
 				7687EA72DDFA1E656BA97A87 /* Copy Pods Resources */,
+				3841E393FD38198A00C90245 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +253,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3841E393FD38198A00C90245 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextSwitcherTests/Pods-TextSwitcherTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7687EA72DDFA1E656BA97A87 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +326,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextSwitcher/Pods-TextSwitcher-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1F8FD44D668F7E1E1145114 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextSwitcher/Pods-TextSwitcher-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -9,7 +9,7 @@
 import Foundation
 
 
-class WindowData: Equatable, Printable {
+class WindowData: Equatable, CustomStringConvertible {
     var owner: String = ""
     var name: String = ""
     var pid: Int = 0
@@ -80,13 +80,9 @@ class AccessibilityWrapper {
 
         // get an array of all the windows in the current Space
         // Note: CGWindowID(0) == kCGNullWindowID
-        let windowInfosRef = CGWindowListCopyWindowInfo(
-            CGWindowListOption(kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements),
-            CGWindowID(0)
-        )
-
-        let windowInfos = windowInfosRef.takeRetainedValue() as [AnyObject]
-
+        let options = CGWindowListOption(arrayLiteral: CGWindowListOption.ExcludeDesktopElements, CGWindowListOption.OptionOnScreenOnly)
+        let windowInfosRef = CGWindowListCopyWindowInfo(options, CGWindowID(0))
+        let windowInfos = windowInfosRef as NSArray? as? [AnyObject]
         if let windowsDowncasted = windowInfos as? [NSDictionary] {
             windowDicts = buildWindowDicts(windowsDowncasted)
         }
@@ -95,10 +91,10 @@ class AccessibilityWrapper {
     }
 
     class func windowsBelowCurrent() -> [WindowData]? {
-        let windowInfosRef = CGWindowListCopyWindowInfo(CGWindowListOption(
-            kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements | kCGWindowListOptionOnScreenBelowWindow),
-            CGWindowID(0))
-        let windowInfos = windowInfosRef.takeRetainedValue() as [AnyObject]
+        let options = CGWindowListOption(arrayLiteral: CGWindowListOption.ExcludeDesktopElements,
+                CGWindowListOption.OptionOnScreenOnly, CGWindowListOption.OptionOnScreenBelowWindow)
+        let windowInfosRef = CGWindowListCopyWindowInfo(options, CGWindowID(0))
+        let windowInfos = windowInfosRef as NSArray? as? [AnyObject]
         if let windowsDowncasted = windowInfos as? [NSDictionary] {
             return buildWindowDicts(windowsDowncasted)
         }
@@ -123,12 +119,12 @@ class AccessibilityWrapper {
         let pid: pid_t = pid_t(applicationPid)
         let appRef: AXUIElement = AXUIElementCreateApplication(pid).takeRetainedValue()
         let systemWideElement : AXUIElement = AXUIElementCreateSystemWide().takeRetainedValue()
-        let windowListRef = UnsafeMutablePointer<Unmanaged<AnyObject>?>.alloc(1)
+        let windowListRef = UnsafeMutablePointer<AnyObject?>.alloc(1)
 
         AXUIElementCopyAttributeValue(appRef, kAXWindowsAttribute, windowListRef)
         
         // XXX: I can't figure out how to unwrap these two values. Xcode hates me no matter what I do.
-        let windows: CFArray = windowListRef.memory!.takeRetainedValue() as! CFArray
+        let windows = windowListRef as! CFArray
         let numWindows = CFArrayGetCount(windows)
 
         // Whether or not we found a title match. If we don't, we'll try to show the first app window.
@@ -140,11 +136,11 @@ class AccessibilityWrapper {
         
         for var i = 0; i < numWindows; i++ {
             let windowRef = windowAtIndex(i, fromWindows: windows)
-            let titleValue = UnsafeMutablePointer<Unmanaged<AnyObject>?>.alloc(1)
+            let titleValue = UnsafeMutablePointer<AnyObject?>.alloc(1)
             
             AXUIElementCopyAttributeValue(windowRef, kAXTitleAttribute, titleValue);
             
-            if let title = titleValue.memory?.takeRetainedValue() as? String {
+            if let title = titleValue as? String {
                 if title == windowName {
                     raiseWindow(windowRef)
                     foundMatch = true

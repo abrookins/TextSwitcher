@@ -46,7 +46,7 @@ class TextSwitcherView: NSTextField {
     
     override func performKeyEquivalent(theEvent: NSEvent) -> Bool {
         let chooseResult = Selector(chooseSearchResultAction)
-        let usingCommandKey = theEvent.modifierFlags & NSEventModifierFlags.CommandKeyMask != nil
+        let usingCommandKey = theEvent.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask)
         
         if usingCommandKey {
             chosenResult = theEvent.charactersIgnoringModifiers!
