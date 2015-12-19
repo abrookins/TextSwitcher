@@ -118,13 +118,12 @@ class AccessibilityWrapper {
     class func openWindow(forApplicationWithPid applicationPid: Int, named windowName: String) {
         let pid: pid_t = pid_t(applicationPid)
         let appRef: AXUIElement = AXUIElementCreateApplication(pid).takeRetainedValue()
-        let systemWideElement : AXUIElement = AXUIElementCreateSystemWide().takeRetainedValue()
         let windowListRef = UnsafeMutablePointer<AnyObject?>.alloc(1)
 
         AXUIElementCopyAttributeValue(appRef, kAXWindowsAttribute, windowListRef)
         
         // XXX: I can't figure out how to unwrap these two values. Xcode hates me no matter what I do.
-        let windows = windowListRef as! CFArray
+        let windows = windowListRef.memory as! CFArray
         let numWindows = CFArrayGetCount(windows)
 
         // Whether or not we found a title match. If we don't, we'll try to show the first app window.
